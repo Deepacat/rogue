@@ -1,0 +1,10 @@
+KubeJS data & assets folders will almost ALWAYS take priority over other methods of adding data/assets
+
+This means that anything in this folder 99% of the type will be un-overrideable by another resource pack
+
+However it can be nice to allow your custom assets to be override-able, 
+    so users may make their own resourcepacks for your custom modpack assets
+
+In the case that you do want users to be able to create resourcepacks and override your assets,
+    use the `/mineraft/config/paxi/resourcepacks/custom_pack_assets/assets/` folder which is
+    a force enabled resourcepack with editable priority for users

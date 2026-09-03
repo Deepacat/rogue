@@ -1,0 +1,47 @@
+{
+  "priority": 1,
+  "color": "#9760FB",
+  "enchant_reduction": true,
+  "enchant_source": "mob",
+  "tags": [
+    {
+      "tag_type": "alembic:branch_tag",
+      "run": "alembic:particles/ender",
+      "else": {
+        "tag_type": "alembic:branch_tag",
+        "run": "alembic:particles/wither",
+        "else": {
+          "tag_type": "alembic:branch_tag",
+          "run": "alembic:particles/sculk",
+          "else": {
+            "tag_type": "alembic:branch_tag",
+            "run": "alembic:particles/soul_fire",
+            "else": {
+              "tag_type": "alembic:particle_tag",
+              "particle_speed": 0.35,
+              "scalar": 3,
+              "particle_options": {
+                "type": "alembic:arcane_spark"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "tag_type": "alembic:particle_tag",
+      "particle_options": {
+        "type": "alembic:arcane_damage"
+      },
+      "conditions": "alembic:damage_from_player",
+      "scale_with_damage": true
+    },
+    {
+      "tag_type": "alembic:per_level_tag",
+      "bonus_per_level": -1,
+      "max": -10,
+      "level_difference": 5,
+      "modifier_type": "resistance"
+    }
+  ]
+}

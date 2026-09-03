@@ -1,0 +1,30 @@
+{
+  "priority": 1,
+  "source_overrides": {
+    "alembic:alchemical": {"alchemical_damage": 1.0},
+    "minecraft:wither": {"arcane_damage": 0.50, "true_damage": 0.50},
+    "minecraft:sting": {"alchemical_damage": 0.20, "physical_damage": 0.80},
+    "alembic:allergy": {"alchemical_damage": 1.0},
+    "minecraft:out_of_world": {"true_damage": 1.0},
+    "minecraft:lightning_bolt": {"true_damage": 1.0},
+    "minecraft:freeze": {"true_damage": 1.0},
+    "minecraft:wither_skull":{"true_damage": 0.10, "arcane_damage": 0.60, "physical_damage": 0.30},
+    "minecraft:in_fire": {"fire_damage": 1.0},
+    "minecraft:on_fire": {"fire_damage": 1.0},
+    "alembic:soul_fire": {"fire_damage":  0.50, "arcane_damage":  0.50},
+    "minecraft:player_explosion": {"fire_damage": 0.50, "physical_damage": 0.50},
+    "minecraft:explosion": {"fire_damage": 0.50, "physical_damage": 0.50},
+    "minecraft:fireworks": {"fire_damage": 0.50, "physical_damage": 0.50},
+    "minecraft:fireball": {"fire_damage": 0.70, "physical_damage": 0.30},
+    "minecraft:drown": {"true_damage": 1.0},
+    "minecraft:magic": {"arcane_damage": 1.0},
+    "minecraft:trident": {"arcane_damage": 0.25, "physical_damage": 0.75},
+    "minecraft:sonic_boom": {"arcane_damage": 0.50, "physical_damage": 0.50},
+    "minecraft:thorns": {"arcane_damage": 1.0},
+    "alembic:evoker_fangs": {"arcane_damage": 0.10, "physical_damage": 0.90},
+    "alembic:guardian_beam": {"arcane_damage": 1.0},
+    "minecraft:arrow": {"ranged_damage": 1.0},
+    "minecraft:thrown": {"physical_damage": 1.0},
+    "minecraft:fall": {"true_damage": 1.0}
+  }
+}

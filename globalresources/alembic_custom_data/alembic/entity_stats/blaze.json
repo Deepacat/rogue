@@ -1,0 +1,20 @@
+{
+  "priority": 1,
+  "type": "minecraft:blaze",
+  "resistances": {
+    "alchemical_damage": 1.0,
+    "physical_damage": 1.2,
+    "fire_damage": 2.0,
+    "arcane_damage": 0.7,
+    "true_damage": 0.0
+  },
+  "damage": {
+    "fire_damage": 0.90,
+	"physical_damage": 0.10
+  },
+  "ignored_sources": [
+  "minecraft:lava",
+  "minecraft:in_fire",
+  "minecraft:on_fire"
+  ]
+}

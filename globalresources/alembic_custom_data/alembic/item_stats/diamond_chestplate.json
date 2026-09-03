@@ -1,0 +1,13 @@
+{
+  "id": "minecraft:diamond_chestplate",
+  "modifiers": [
+    {
+      "type": "append",
+      "attribute": "alembic:arcane_damage.resistance",
+      "value": 3,
+      "operation": "ADDITION",
+      "uuid": "c8c3de3d-1fea-4d7c-a8b0-29f63c4c3454"
+    }
+  ],
+  "equipment_slot": "CHEST"
+}

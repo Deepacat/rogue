@@ -1,0 +1,2 @@
+Overworld json overwritten to remove vanilla worldgen, 
+makes generating initial world a lot faster esp since vanilla world is unused

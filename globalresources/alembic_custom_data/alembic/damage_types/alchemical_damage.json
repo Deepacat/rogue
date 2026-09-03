@@ -1,0 +1,39 @@
+{
+  "priority": 1,
+  "color": "#12B88E",
+  "enchant_reduction": true,
+  "enchant_source": "mob",
+  "tags": [
+    {
+      "tag_type": "alembic:branch_tag",
+      "run": "alembic:particles/redstone_spark",
+      "else": {
+        "tag_type": "alembic:branch_tag",
+        "run": "alembic:particles/sculk",
+        "else": {
+          "tag_type": "alembic:particle_tag",
+          "particle_speed": 0.025,
+          "scalar": 6,
+          "particle_options": {
+           "type": "alembic:alchemical_reaction"
+         }
+        }
+      }
+    },
+    {
+      "tag_type": "alembic:particle_tag",
+      "particle_options": {
+        "type": "alembic:alchemical_damage"
+      },
+      "conditions": "alembic:damage_from_player",
+      "scale_with_damage": true
+    },
+    {
+      "tag_type": "alembic:hunger_tag",
+      "modifier_type": "resistance",
+      "hunger_amount": 4,
+      "amount": -1,
+      "operation": "ADDITION"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "damage_attribute": {
+    "base": 0,
+    "min": 0,
+    "max": 1024
+  },
+  "shielding_attribute": {
+    "base": 0,
+    "min": 0,
+    "max": 1024
+  },
+  "absorption_attribute": {
+    "base": 0,
+    "min": 0,
+    "max": 1024
+  },
+  "resistance_attribute": {
+    "base": 0,
+    "min": -1024,
+    "max": 1024
+  },
+  "resistance_potion": {
+    "value": 0.1,
+    "operation": "MULTIPLY_BASE",
+    "vanilla_override": true,
+    "immunities": [
+      "#alembic:is_fire_only",
+      "minecraft:lava",
+      "alembic:soul_fire"
+    ],
+    "color": "#E49A3A",
+    "max_level": 2
+  }
+}

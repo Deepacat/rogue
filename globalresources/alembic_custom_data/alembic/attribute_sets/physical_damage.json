@@ -1,0 +1,14 @@
+{
+  "damage_attribute": "minecraft:generic.attack_damage",
+  "shielding_attribute": {
+    "base": 0,
+    "min": 0,
+    "max": 1024
+  },
+  "absorption_attribute": {
+    "base": 0,
+    "min": 0,
+    "max": 1024
+  },
+  "resistance_attribute": "minecraft:generic.armor"
+}

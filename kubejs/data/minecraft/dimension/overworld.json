@@ -1,0 +1,21 @@
+{
+  "type": "kubejs:lobby_type",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "kubejs:lobby_biome",
+      "lakes": false,
+      "features": false,
+      "layers": [
+        {
+          "height": 319,
+          "block": "minecraft:air"
+        },
+        {
+          "height": 1,
+          "block": "minecraft:bedrock"
+        }
+      ]
+    }
+  }
+}

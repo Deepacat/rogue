@@ -1,0 +1,7 @@
+{
+  "priority": 1,
+  "color": "#F10000",
+  "enchant_reduction": true,
+  "enchant_source": "mob",
+  "tags": []
+}

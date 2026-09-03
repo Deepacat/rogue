@@ -1,0 +1,32 @@
+{
+  "states": {
+    "unfocused": {
+      "volume_multipliers": {
+        "master": 1.0,
+        "music": 0.8,
+        "record": 0.25,
+        "weather": 0.25,
+        "block": 0.35,
+        "hostile": 0.4,
+        "neutral": 0.25,
+        "player": 0.5,
+        "ambient": 0.25,
+        "voice": 0.25
+      }
+    },
+    "invisible": {
+      "volume_multipliers": {
+        "master": 1.0,
+        "music": 0.5,
+        "record": 0.2,
+        "weather": 0.2,
+        "block": 0.3,
+        "hostile": 0.35,
+        "neutral": 0.15,
+        "player": 0.4,
+        "ambient": 0.2,
+        "voice": 0.2
+      }
+    }
+  }
+}

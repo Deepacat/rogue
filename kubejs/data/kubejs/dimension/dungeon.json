@@ -1,0 +1,17 @@
+{
+  "type": "kubejs:dungeon_type",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "kubejs:dungeon_brick_biome",
+      "lakes": false,
+      "features": false,
+      "layers": [
+        {
+          "height": 2032,
+          "block": "minecraft:bedrock"
+        }
+      ]
+    }
+  }
+}

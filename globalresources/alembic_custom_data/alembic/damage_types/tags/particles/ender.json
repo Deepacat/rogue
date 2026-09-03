@@ -1,0 +1,8 @@
+{
+  "tag_type": "alembic:particle_tag",
+  "particle_speed": 0.35,
+  "particle_options": {
+    "type": "alembic:ender_magic"
+  },
+  "conditions": "alembic:damage_from_end"
+}
