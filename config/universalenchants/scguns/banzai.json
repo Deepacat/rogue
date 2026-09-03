@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 2,
+  "items": [
+    "$minecraft:scguns_bayonet"
+  ],
+  "incompatible": [
+    "scguns:gun_rust",
+    "scguns:lightweight",
+    "scguns:elemental_pop"
+  ]
+}

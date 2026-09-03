@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "items": [
+    "$minecraft:scguns_trigger_finger_compatible"
+  ],
+  "incompatible": [
+    "scguns:quick_hands"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "items": [
+    "$minecraft:scguns_shell_catcher_compatible"
+  ],
+  "incompatible": [
+    "scguns:reclaimed"
+  ]
+}

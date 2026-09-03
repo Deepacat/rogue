@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 2,
+  "items": [
+    "$minecraft:scguns_gun"
+  ],
+  "incompatible": [
+    "scguns:hot_barrel",
+    "scguns:accelerator",
+    "scguns:collateral",
+    "scguns:heavy_shot",
+    "scguns:waterproof"
+  ]
+}

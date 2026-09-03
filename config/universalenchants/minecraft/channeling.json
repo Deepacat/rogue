@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 2,
+  "items": [
+    "$minecraft:trident",
+    "irons_spellbooks:twilight_gale"
+  ],
+  "incompatible": [
+    "minecraft:riptide"
+  ]
+}

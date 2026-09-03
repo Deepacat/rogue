@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 2,
+  "items": [
+    "$minecraft:wearable",
+    "scguns:laser_sight",
+    "scguns:long_scope",
+    "scguns:medium_scope",
+    "scguns:reflex_sight",
+    "scguns:light_stock",
+    "scguns:weighted_stock",
+    "scguns:wooden_stock",
+    "scguns:bump_stock",
+    "scguns:silencer",
+    "scguns:advanced_silencer",
+    "scguns:muzzle_brake",
+    "scguns:extended_barrel",
+    "scguns:slug_splitter",
+    "scguns:light_grip",
+    "scguns:vertical_grip",
+    "scguns:iron_bayonet",
+    "scguns:anthralite_bayonet",
+    "scguns:diamond_bayonet",
+    "scguns:netherite_bayonet",
+    "scguns:extended_mag",
+    "scguns:speed_mag",
+    "scguns:plus_p_mag",
+    "$minecraft:universal_enchants_horse_armor"
+  ],
+  "incompatible": []
+}

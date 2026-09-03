@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 2,
+  "items": [
+    "$minecraft:weapon",
+    "scguns:iron_bayonet",
+    "scguns:anthralite_bayonet",
+    "scguns:diamond_bayonet",
+    "scguns:netherite_bayonet",
+    "trials:mace",
+    "$minecraft:universal_enchants_axe",
+    "$minecraft:trident"
+  ],
+  "incompatible": [
+    "scguns:corroded",
+    "trials:density",
+    "minecraft:power",
+    "minecraft:impaling"
+  ]
+}

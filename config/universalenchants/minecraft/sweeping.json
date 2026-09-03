@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 2,
+  "items": [
+    "$minecraft:weapon",
+    "scguns:iron_bayonet",
+    "scguns:anthralite_bayonet",
+    "scguns:diamond_bayonet",
+    "scguns:netherite_bayonet",
+    "$minecraft:universal_enchants_axe",
+    "$minecraft:trident"
+  ],
+  "incompatible": []
+}

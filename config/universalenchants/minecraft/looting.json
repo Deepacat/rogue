@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 2,
+  "items": [
+    "$minecraft:weapon",
+    "scguns:iron_bayonet",
+    "scguns:anthralite_bayonet",
+    "scguns:diamond_bayonet",
+    "scguns:netherite_bayonet",
+    "create:potato_cannon",
+    "$minecraft:universal_enchants_axe",
+    "$minecraft:trident",
+    "$minecraft:bow",
+    "$minecraft:crossbow"
+  ],
+  "incompatible": [
+    "minecraft:silk_touch"
+  ]
+}

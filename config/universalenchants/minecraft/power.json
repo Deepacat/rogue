@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 2,
+  "items": [
+    "$minecraft:bow",
+    "create:potato_cannon",
+    "$minecraft:crossbow"
+  ],
+  "incompatible": [
+    "minecraft:bane_of_arthropods",
+    "minecraft:sharpness",
+    "minecraft:smite",
+    "minecraft:impaling"
+  ]
+}
