@@ -1,0 +1,11 @@
+#Whether or not to modify tooltips to be vanilla friendly. (Turn off if using Apotheosis)
+modify_tooltips = false
+#Whether or not to apply the owner's damage attributes to projectiles. This disables entity-specific damage overrides for the projectile entities.
+owner_attribute_projectiles = true
+#Whether or not to enable debug prints. (Turn off if not debugging)
+enable_debug_prints = false
+#Whether or not to use the compat damage event. (Turn off only if 100% sure mods work with it.)
+compat_damage_event = true
+#Whether or not to ignore the damage event firing twice. (Turn off if in a HIGHLY modded environment)
+ignore_double_damage = true
+

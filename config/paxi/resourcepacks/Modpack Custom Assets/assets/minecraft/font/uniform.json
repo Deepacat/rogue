@@ -1,0 +1,11 @@
+{
+  "providers": [
+    {
+      "type": "ttf",
+      "file": "minecraft:ubuntumono-regular.ttf",
+      "shift": [-0.5, 1.5],
+      "size": 7.5,
+      "oversample": 8.0
+    }
+  ]
+}

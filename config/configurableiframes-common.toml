@@ -1,0 +1,165 @@
+# Ignores all the configs except the custom entries. You can add vanilla entries to custom.
+# This will have a very minor performance increase.
+streamlineMode = false
+#
+# When in streamline mode, use the default values for anything not listed
+defaultStreamline = false
+#
+# If an unknown damage type is found, use this value. There's a few rules to this! 
+# If we're in streamline mode and defaultStreamline is false, this will never be used. 
+# If we're in streamline mode and defaultStreamline is true, this will apply to ANY damage source not listed. This probably isn't what you want.
+# If we're in normal mode, the mod first checks all custom values, then any remaining vanilla ones, and finally defaults to this.
+#Range: 0 ~ 20
+defaultValue = 20
+#
+# If a damage value isn't handled and isn't known, print it to console before assigning default.
+printUnknown = false
+#
+# A list of damage sources. Each value must align with an equal number in the values list. 
+# This list is checked before the vanilla entries. If you include anything from vanilla here, it will override the other value.
+damageSources = ["somemod:damage_1", "minecraft:new_special_damage"]
+#
+# A list of invulnerability frames for the given damage sources. Each value must align with an equal entry in the sources list.
+damageSourceValues = [1, 5]
+#
+# Any source listed in here will use Vanilla's value of 20. This takes both vanilla and modded entries, and is checked before other entries. 
+#
+ignore = ["bestmod:cool_damage"]
+#
+#
+# Player takes most forms of direct mob melee damage
+#Range: 0 ~ 20
+playerFromMob = 20
+#
+# Player damaged by another player
+#Range: 0 ~ 20
+playerFromPlayer = 20
+#
+# Player takes damage from the Warden's ranged attack
+#Range: 0 ~ 20
+playerFromWardenRanged = 20
+#
+# Player has wither effect
+#Range: 0 ~ 20
+playerHasWither = 20
+#
+# Player damage over time from status effect or similar (e.g. poison)
+#Range: 0 ~ 20
+playerMagic = 20
+#
+# Player is stood in fire (not just on fire)
+#Range: 0 ~ 20
+playerInFire = 20
+#
+# Player is touching lava
+#Range: 0 ~ 20
+playerInLava = 20
+#
+# Player is touching a cactus
+#Range: 0 ~ 20
+playerCactus = 20
+#
+# Player collides with world (fall damage, fly into wall, blocks fall on them)
+#Range: 0 ~ 20
+playerWorldImpact = 20
+#
+# Player hit by a projectile (arrow, trident, fireball etc)
+#Range: 0 ~ 20
+playerFromProjectile = 20
+#
+# Misc meta sources (e.g. server commands or custom packets. Mods may use this.)
+#Range: 0 ~ 20
+playerGeneric = 20
+#
+# Player takes game meta damage (out of world, out of world border, bad respawn)
+#Range: 0 ~ 20
+playerMeta = 20
+#
+# Player takes instant damage from a potion or similar
+#Range: 0 ~ 20
+playerIndirectMagic = 20
+#
+# Player is hit by an explosion
+#Range: 0 ~ 20
+playerExplosion = 20
+#
+# Player is hit by firework
+#Range: 0 ~ 20
+playerFireworks = 20
+#
+# Player takes thorns damage (guardian recoil, armour enchantment)
+#Range: 0 ~ 20
+playerThorns = 20
+#
+# Player is hit by lightning
+#Range: 0 ~ 20
+playerLightning = 20
+#
+# Mob takes most forms of direct mob melee damage
+#Range: 0 ~ 20
+mobFromMob = 20
+#
+# Mob damaged by another player
+#Range: 0 ~ 20
+mobFromPlayer = 20
+#
+# Mob takes damage from the Warden's ranged attack
+#Range: 0 ~ 20
+mobFromWardenRanged = 20
+#
+# Mob has wither effect
+#Range: 0 ~ 20
+mobHasWither = 20
+#
+# Mob damage over time from status effect or similar (e.g. poison)
+#Range: 0 ~ 20
+mobMagic = 20
+#
+# Mob is stood in fire (not just on fire)
+#Range: 0 ~ 20
+mobInFire = 20
+#
+# Mob is touching lava
+#Range: 0 ~ 20
+mobInLava = 20
+#
+# Mob is touching a cactus
+#Range: 0 ~ 20
+mobCactus = 20
+#
+# Mob collides with world (fall damage, fly into wall, blocks fall on them)
+#Range: 0 ~ 20
+mobWorldImpact = 20
+#
+# Mob hit by a projectile (arrow, trident, fireball etc)
+#Range: 0 ~ 20
+mobFromProjectile = 20
+#
+# Misc meta sources (e.g. server commands or custom packets. Mods may use this.)
+#Range: 0 ~ 20
+mobGeneric = 20
+#
+# Mob takes game meta damage (out of world, out of world border, bad respawn)
+#Range: 0 ~ 20
+mobMeta = 20
+#
+# Mob takes instant damage from a potion or similar
+#Range: 0 ~ 20
+mobIndirectMagic = 20
+#
+# Mob is hit by an explosion
+#Range: 0 ~ 20
+mobExplosion = 20
+#
+# Mob is hit by firework
+#Range: 0 ~ 20
+mobFireworks = 20
+#
+# Mob takes thorns damage (guardian recoil, armour enchantment)
+#Range: 0 ~ 20
+mobThorns = 20
+#
+# Mob is hit by lightning
+#Range: 0 ~ 20
+mobLightning = 20
+

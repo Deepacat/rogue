@@ -1,0 +1,516 @@
+
+[Enchantments]
+
+	[Enchantments.First_Blood]
+		#Enable or disable the First Blood enchantment entirely.
+		enableFirstBlood = true
+		#Damage multiplier when hitting a full-health target. (Default: 2.0x)
+		#Range: 1.0 ~ 10.0
+		damageMultiplier = 2.0
+		#Force-allow First Blood on these items. Supports tags (#forge:weapons) and wildcards (*_spear).
+		firstBloodWhitelist = []
+		#Explicitly ban First Blood from these items. Overrides whitelist and defaults.
+		firstBloodBlacklist = []
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "RARE"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 65
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.Frost_Aspect]
+		enableFrostAspect = true
+		#How many ticks of freezing are applied per enchantment level. (Default: 160)
+		#Range: 20 ~ 1200
+		freezeTicksPerLevel = 160
+		frostAspectWhitelist = []
+		frostAspectBlacklist = []
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "RARE"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 65
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.GroundPound]
+		#Enable or disable the Ground Pound enchantment entirely.
+		enableGroundPound = true
+		#Force-allow Ground Pound on these items.
+		groundPoundWhitelist = []
+		#Explicitly ban Ground Pound from these items.
+		groundPoundBlacklist = []
+		#Whether the ground pound applies a recovery cooldown.
+		cooldownEnabled = true
+		#Cooldown (in ticks) for a minimum height drop. (20 ticks = 1s)
+		#Range: > 0
+		minCooldownTicks = 400
+		#Cooldown (in ticks) for a maximum height drop.
+		#Range: > 0
+		maxCooldownTicks = 1200
+		#Base cooldown reduction (in ticks) awarded for ANY kill while on cooldown. (20 ticks = 1s). Set to 0 to disable.
+		#Range: > 0
+		baseKillCooldownReductionTicks = 20
+		#Minimum blocks fallen to trigger the explosion.
+		#Range: 1.0 ~ 256.0
+		minTriggerHeight = 3.0
+		#The cap for 1-to-1 scaling of height-to-radius.
+		#Range: 1.0 ~ 256.0
+		maxRadiusAndHeight = 16.0
+		#Bonus flat damage added per block fallen (multiplied by enchant level).
+		#Range: 0.0 ~ 100.0
+		bonusDamagePerBlock = 0.5
+		#Hard cap on the maximum bonus damage the enchantment can do.
+		#Range: 0.0 ~ 1000.0
+		maxBonusDamage = 100.0
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "VERY_RARE"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 65
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.Precision]
+		enablePrecision = true
+		#Speed multiplier per level. (Default: 0.15)
+		#Range: 0.0 ~ 2.0
+		speedMultiplier = 0.15
+		#Aim tightening factor per level. (Default: 0.25)
+		#Range: 0.0 ~ 1.0
+		tightenFactor = 0.25
+		precisionWhitelist = []
+		precisionBlacklist = []
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "RARE"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 65
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.PainCycle]
+		#Enable or disable the Pain Cycle enchantment entirely.
+		enablePainCycle = true
+		#Force-allow Pain Cycle on these items.
+		painCycleWhitelist = []
+		#Explicitly ban Pain Cycle from these items.
+		painCycleBlacklist = []
+		#How the health cost is calculated per swing. Options: 'PERCENT', 'FLAT'
+		costMode = "PERCENT"
+		#The value for the health cost. (0.10 = 10% if PERCENT, or 2.0 = 1 heart if FLAT)
+		#Range: 0.0 ~ 1000.0
+		costValue = 0.1
+		#What happens if the player's health drops too low? Options: 'KILL', 'PERCENT', 'FLAT'
+		survivalMode = "KILL"
+		#The minimum health required to remain after swinging. If the swing would drop them below this, the stack fails to build. (0.10 = 10% if PERCENT, or 3.0 = 1.5 hearts if FLAT)
+		#Range: 0.0 ~ 1000.0
+		survivalValue = 0.1
+		#The base bonus damage multiplier for the 5th hit nuke. Multiplied by enchant level.
+		#Range: 0.0 ~ 100.0
+		nukeDamageMultiplier = 1.333
+		#How long the Deep Wounds penalty lasts after a nuke (in ticks. 300 = 15s).
+		#Range: > 0
+		deepWoundsDurationTicks = 300
+		#Healing reduction percentage per stack of Deep Wounds (0.20 = 20%).
+		#Range: 0.0 ~ 1.0
+		deepWoundsHealReduction = 0.2
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "VERY_RARE"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 65
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.Health_Boost]
+		enableHealthBoost = true
+		#How much max health is granted per level. (Default: 1)
+		#Range: 1 ~ 20
+		healthPerLevel = 1
+		healthBoostWhitelist = []
+		healthBoostBlacklist = []
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "VERY_RARE"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 65
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.Lock_In]
+		enableLockIn = true
+		#Flight speed towards the target. (Default: 1.5)
+		#Range: 0.5 ~ 5.0
+		flightSpeed = 1.5
+		lockInWhitelist = []
+		lockInBlacklist = []
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "VERY_RARE"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 65
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.Gravity]
+		enableGravity = true
+		#Pull strength towards the gravity well. (Default: 0.12)
+		#Range: 0.01 ~ 1.0
+		pullStrength = 0.12
+		gravityWhitelist = []
+		gravityBlacklist = []
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "VERY_RARE"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 65
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.Air_Control]
+		enableAirControl = true
+		#Base strafing force in the air. (Default: 0.03)
+		#Range: 0.01 ~ 0.2
+		strafeForce = 0.03
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "COMMON"
+		#Force-allow Air Control on these items. Empty list = allow ALL armor.
+		airControlWhitelist = ["#forge:armors/leggings"]
+		#Explicitly ban items or tags. Overrides the whitelist.
+		airControlBlacklist = []
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 45
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.Lucky_Strike]
+		#Enable or disable the Lucky Strike enchantment entirely.
+		enableLuckyStrike = true
+		#Base chance for Lucky Strike to trigger. (0.05 = 5%)
+		#Range: 0.0 ~ 1.0
+		baseChance = 0.05
+		#Additional chance granted per point of the Luck attribute. (0.05 = 5%)
+		#Range: 0.0 ~ 1.0
+		chancePerLuck = 0.05
+		#Base damage multiplier when a Lucky Strike hits. (1.0 = 100% damage)
+		#Range: 0.0 ~ 100.0
+		baseDamageMultiplier = 1.0
+		#Additional damage multiplier added per level of the enchantment. (1.0 = +100% damage per level)
+		#Range: 0.0 ~ 100.0
+		damagePerLevel = 1.0
+		luckyStrikeWhitelist = []
+		luckyStrikeBlacklist = []
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "VERY_RARE"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 65
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.Pulling]
+		enablePulling = true
+		#Multiplier for the pull speed.
+		#Range: 0.1 ~ 10.0
+		baseStrength = 1.7
+		#Upward hop applied to the mob to clear the ground.
+		#Range: 0.0 ~ 5.0
+		verticalLift = 0.3
+		#How close the mob gets before doing a hard stop.
+		#Range: 1.0 ~ 32.0
+		stopRadius = 6.0
+		#Cooldown applied to a mob after being pulled (in milliseconds).
+		#Range: > 0
+		cooldownMs = 10000
+		#Safety timeout. If the mob gets stuck for this long, the pull cancels.
+		#Range: 10 ~ 600
+		maxAirTicks = 60
+		pullingWhitelist = []
+		pullingBlacklist = []
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "UNCOMMON"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 65
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.Snowball]
+		#Enable or disable the Snowball enchantment entirely.
+		enableSnowball = true
+		#Maximum health a mob can have to be targeted.
+		#Range: 1.0 ~ 1000.0
+		maxTargetHealth = 50.0
+		#List of entity IDs (e.g., 'minecraft:wither') that Snowball should ignore.
+		snowballEntityBlacklist = []
+		#How long the mob is frozen in place (in ticks. 20 = 1s).
+		#Range: 1 ~ 1200
+		stunDurationTicks = 40
+		#Base cooldown in ticks before reduction.
+		#Range: 0 ~ 1200
+		baseCooldown = 140
+		#Cooldown reduction per level.
+		#Range: 0 ~ 1200
+		cooldownReductionPerLevel = 40
+		#Base search radius for targeting.
+		#Range: 1.0 ~ 64.0
+		baseRadius = 5.0
+		#Bonus search radius per level past level 3.
+		#Range: 0.0 ~ 32.0
+		bonusRadiusPerLevel = 2.0
+		#Enable the snowflake particles.
+		enableSnowballParticles = true
+		#Number of particles per tick from stunned mobs. Lower this to reduce lag.
+		#Range: 0 ~ 50
+		stunParticleDensity = 2
+		#Items allowed to receive this enchantment. Empty list = allow ALL armor.
+		snowballWhitelist = ["#forge:armors/chestplates"]
+		snowballBlacklist = []
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "RARE"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 65
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.Take_Back]
+		#Enable or disable the Take Back enchantment entirely.
+		enableTakeBack = true
+		#Global cooldown before another Totem can be taken back (24000 = 20 mins).
+		#Range: > 0
+		cooldownTicks = 24000
+		#Time allowed to kill the mob and reclaim the Totem (200 = 10s).
+		#Range: 20 ~ 1200
+		revengeWindowTicks = 200
+		#Radius the returned Totem will seek the player.
+		#Range: 5.0 ~ 256.0
+		magnetRadius = 64.0
+		#Maximum flight speed of the returning Totem.
+		#Range: 0.1 ~ 5.0
+		magnetMaxSpeed = 0.75
+		#Applies the vanilla Glowing effect to the target through walls.
+		enableTakeBackGlowing = true
+		#Items allowed to receive this enchantment. Empty list = allow ALL armor.
+		takeBackWhitelist = ["#forge:armors/chestplates"]
+		takeBackBlacklist = []
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "VERY_RARE"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 65
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.Experience_Resonator]
+		enableExperienceResonator = true
+		#Base chance for Experience Resonator to trigger. (0.05 = 5%)
+		#Range: 0.0 ~ 1.0
+		baseChance = 0.0
+		#Additional chance granted per 10 XP levels. (0.05 = 5%)
+		#Range: 0.0 ~ 1.0
+		chancePer10Levels = 0.04
+		#Maximum possible chance for the enchantment to trigger.
+		#Range: 0.0 ~ 1.0
+		maxChance = 0.4
+		#Base damage multiplier when triggered. (1.0 = 100% damage)
+		#Range: 0.0 ~ 100.0
+		baseDamageMultiplier = 1.0
+		#Additional damage multiplier added per level of the enchantment. (1.0 = +100% damage per level)
+		#Range: 0.0 ~ 100.0
+		damageMultiplierPerLevel = 1.0
+		experienceResonatorWhitelist = []
+		experienceResonatorBlacklist = []
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "RARE"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 15
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 65
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.Exploding]
+		#Enable or disable the Exploding enchantment entirely.
+		enableExploding = true
+		#Percentage of the dead entity's max HP dealt as explosion damage per level. (0.20 = 20%)
+		#Range: 0.01 ~ 10.0
+		damagePercentPerLevel = 0.2
+		#Force-allow Exploding on these items. Empty list defaults to Swords and Axes.
+		explodingWhitelist = ["#forge:tools/swords", "#forge:tools/axes"]
+		explodingBlacklist = []
+		#Enchantment Rarity (COMMON, UNCOMMON, RARE, VERY_RARE). REQUIRES RESTART.
+		rarity = "RARE"
+		#Minimum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		minCost = 20
+		#Maximum level cost in the Enchanting Table.
+		#Range: 1 ~ 100
+		maxCost = 70
+		#Can it be found in loot or enchanting tables?
+		isDiscoverable = true
+		#Can it be traded with villagers?
+		isTradeable = true
+		#If true, it acts like Mending (loot/trades only, no enchanting table).
+		isTreasureOnly = false
+
+	[Enchantments.Vanilla_Overhauls]
+
+		[Enchantments.Vanilla_Overhauls.Efficiency]
+			#Enable or disable the custom percentage-based Efficiency overhaul.
+			enableEfficiencyOverhaul = true
+			#Percentage increase per Efficiency level (0.65 = 65%).
+			#Range: 0.0 ~ 5.0
+			efficiencyPercentPerLevel = 0.65
+			#Show the custom text and corrected Digging Speed on the tooltip. Disable for mod compatibility.
+			enableEfficiencyTooltip = true
+
+		[Enchantments.Vanilla_Overhauls.Sharpness]
+			#Enable or disable the custom percentage-based Sharpness overhaul.
+			enableSharpnessOverhaul = true
+			#Percentage increase per Sharpness level (0.10 = 10%).
+			#Range: 0.0 ~ 5.0
+			sharpnessPercentPerLevel = 0.1
+			sharpnessWhitelist = []
+			sharpnessBlacklist = []
+
+		[Enchantments.Vanilla_Overhauls.Infinity]
+			#Enable or disable the Infinity enchantment rework.
+			enableInfinityOverhaul = true
+			#Chance per level to NOT consume a special arrow. (0.16 = 16%)
+			#Range: 0.0 ~ 1.0
+			specialArrowChancePerLevel = 0.16
+			#List of arrows considered 'special'. Modded arrows and Tipped/Spectral are special by default, but you can force standard arrows to be special here.
+			specialArrowsList = []
+			#List of arrows that are NEVER infinite, even at Level 3. (e.g., 'modid:nuke_arrow')
+			arrowBlacklist = []
+			#Force-allow Infinity on these WEAPONS. Empty list defaults to Bows and Crossbows.
+			infinityWeaponWhitelist = ["minecraft:crossbow"]
+			#Explicitly ban Infinity from these WEAPONS.
+			infinityWeaponBlacklist = []
+
+		[Enchantments.Vanilla_Overhauls.Frost_Walker]
+			#Ice remains frozen even if you stop moving.
+			enableStandstill = true
+			#Crouching pauses the creation of new ice.
+			enableSneak = true
+			#Allows walking on powder snow like leather boots.
+			enablePowderSnow = true
+			#Turns lava into temporary Frosted Magma blocks.
+			enableMagma = true
+			#Frosted ice melts based on a timer instead of light levels (bypasses vanilla light melting).
+			enableLightMeltingTweak = true
+
+	[Enchantments.Global_Compatibilities]
+		#Force two enchantments to be INCOMPATIBLE. Format: 'modid:ench1|modid:ench2'
+		#Example: 'minecraft:mending|minecraft:unbreaking' stops them from combining.
+		forcedIncompatibilities = []
+		#Force two enchantments to be COMPATIBLE (Overrides vanilla rules). Format: 'modid:ench1|modid:ench2'
+		#Example: 'minecraft:mending|minecraft:infinity' allows them on the same bow.
+		forcedCompatibilities = []
+
+	[Enchantments.Modded_Overhauls]
+		#Chance per level for Shaded Respite to save special ammo. (0.16 = 16%)
+		#Range: 0.0 ~ 1.0
+		shadedRespiteSaveChancePerLevel = 0.16
+

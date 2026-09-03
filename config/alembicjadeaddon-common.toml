@@ -1,0 +1,16 @@
+
+[display]
+	#Maximum number of damage types to display in the tooltip
+	#Range: 0 ~ 20
+	maxDamageTypesDisplayed = 3
+	#Maximum number of resistances/weaknesses to display in the tooltip
+	#Range: 0 ~ 20
+	maxResistancesDisplayed = 5
+	#List of damage types that should not be displayed in tooltips
+	#Format: 'modid:damage_type'
+	blacklistedDamageTypes = []
+	#Show damage types that bypass armor/resistances (true damage)
+	showTrueDamage = false
+	#Show numerical resistance values in tooltips
+	showResistanceNumbers = false
+

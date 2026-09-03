@@ -1,0 +1,8 @@
+
+[general]
+	#Enable extra Multishot levels (2 and 3). Default: true
+	enableExtraLevels = true
+	#Maximum Multishot enchantment level (1–10). Default: 3
+	#Range: 1 ~ 10
+	multishotMaxLevel = 3
+
