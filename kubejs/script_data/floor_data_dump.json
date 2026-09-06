@@ -1,0 +1,12 @@
+{
+	"dungeon": {
+		"normal": [
+			"kubejs:vinnyacornertest",
+			"kubejs:vinnya36doortest",
+			"kubejs:longhalltestfordeepa"
+		],
+		"lobby": [
+			"kubejs:lobby_dungeon"
+		]
+	}
+}

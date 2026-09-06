@@ -9,10 +9,9 @@ PlayerEvents.loggedIn(e => {
     // first time player, spawn them to the lobby
     if (playerFirstJoin == false) {
         playerData.putBoolean('first_join', true)
+        playerData.putString('current_run', null)
         server.runCommandSilent(`execute in kubejs:lobby run spawnpoint ${player.name.string} 8 5 8 180`)
-        server.runCommandSilent(
-            `execute in kubejs:lobby run tp ${player.name.string} 8 5 8 180 0`
-        )
+        server.runCommandSilent(`execute in kubejs:lobby run tp ${player.name.string} 8 5 8 180 0`)
     }
 
     // first spawn, generate the spawn area

@@ -46,7 +46,7 @@
 	// Applies movement speed multiplier while attacking. (Min: 0, Max: 1). Use `0` for a full stop while attacking. Use `1` for no movement speed penalty
 	"movement_speed_while_attacking": 1.0,
 	// Determines if applying the movement speed multiplier while attacking is done smoothly or instantly
-	"movement_speed_applied_smoothly": true,
+	"movement_speed_applied_smoothly": false,
 	// Determines whether or not to apply movement speed reduction while attacking mounted
 	"movement_speed_effected_while_mounting": false,
 	// Attacks faster than a vanilla sword will do smaller knockback, proportionally.

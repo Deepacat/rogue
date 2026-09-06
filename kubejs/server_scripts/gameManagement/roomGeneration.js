@@ -1,14 +1,3 @@
-const $Direction = Java.loadClass("net.minecraft.core.Direction")
-
-let currentRun = {
-    "floor_number": 1,
-    // "players": [],
-    // "alive_players": [],
-    "theme": "dungeon",
-    // "exhausted_rooms": [],
-    "room_count": 0
-}
-
 /** @param {Internal.CommandContext<Internal.CommandSourceStack>} ctx */
 function genStart(ctx, Commands, Arguments) {
     const { server, player, level } = ctx.source
@@ -25,11 +14,14 @@ function genStart(ctx, Commands, Arguments) {
 
 ServerEvents.commandRegistry(e => {
     const { commands: Commands, arguments: Arguments } = e
-    e.register(Commands.literal("startgen")
+    e.register(Commands.literal("dev")
         .requires(s => s.hasPermission(2))
-        .executes(ctx => {
-            return genStart(ctx, Commands, Arguments)
-        })
+        .then(Commands.literal("startgen")
+            .requires(s => s.hasPermission(2))
+            .executes(ctx => {
+                return genStart(ctx, Commands, Arguments)
+            })
+        )
     )
 })
 
@@ -48,7 +40,9 @@ function genRoomTest(pos, genDirection, runData, e) {
     // console.log(`Outward direction (genDirection): ${genDirection}`)
 
     // Pick a random room from the floor's room list
-    let randomRoom = floorData[runData.theme][Math.floor(Math.random() * floorData[runData.theme].length)]
+    // let randomRoom = floorData[runData.theme][Math.floor(Math.random() * floorData[runData.theme].length)]
+    let roomList = floorData[runData.theme]["normal"]
+    let randomRoom = roomList[Math.floor(Math.random() * roomList.length)]
     let roomObj = savedRooms[randomRoom]
 
     // Pick a random non-exit door from the new room

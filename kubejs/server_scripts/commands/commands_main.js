@@ -60,10 +60,6 @@ function deleteDimension(ctx, Commands, Arguments) {
 	return global.deleteDimension(Arguments.GREEDY_STRING.getResult(ctx, "dimensionID"))
 }
 
-// temporary variables for testing suggestions b4 I make an actual place for storing these
-const floorThemes = ["magic", "dungeon", "lush"]
-const roomTypes = ["normal", "long", "miniboss", "boss", "shrine"]
-
 ServerEvents.commandRegistry(e => {
 	const { commands: Commands, arguments: Arguments } = e
 	// e.register(Commands.literal("rogue"))

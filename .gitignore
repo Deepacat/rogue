@@ -36,6 +36,7 @@
 /data/
 /cache/
 /instanceBuild/
+/figura/
 
 # Pakku
 /build/
