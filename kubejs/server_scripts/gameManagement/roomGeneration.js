@@ -40,8 +40,7 @@ function genRoomTest(pos, genDirection, runData, e) {
     // console.log(`Outward direction (genDirection): ${genDirection}`)
 
     // Pick a random room from the floor's room list
-    // let randomRoom = floorData[runData.theme][Math.floor(Math.random() * floorData[runData.theme].length)]
-    let roomList = floorData[runData.theme]["normal"]
+    let roomList = floorData[runData.current_theme]["normal"]
     let randomRoom = roomList[Math.floor(Math.random() * roomList.length)]
     let roomObj = savedRooms[randomRoom]
 

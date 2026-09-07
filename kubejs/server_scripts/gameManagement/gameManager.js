@@ -13,40 +13,51 @@ let currentRun = {
  * @returns {number} */
 function startRun(event, startPos) {
     const { server, level } = event
+    const startingPlayer = event.player
+
     // Run can only be started from the lobby dimension (shouldn't happy outside of it realistically)
     if (level.dimension != "kubejs:lobby") { console.log("Run failed to start, player not in lobby dimension."); return 0 }
+
     // Generate a run uuid for tracking and dimension
     let runUUID = $UUID.randomUUID().toString()
-    let runDim = `rogue:${runUUID}`
+    let runDimID = `rogue:${runUUID}`
+
     // Get position and make a bounding box for entity detection
     let tpBox = AABB.ofBlock(new BlockPos(startPos.x, startPos.y, startPos.z)).inflate(3)
+
     // Get players within the bounding box
     let playersInRunArray = level.getEntitiesOfClass($Player, tpBox).map(p => p.stringUuid)
+
     // Template run object for tracking data related to the run
-    let runObj = {
+    let runObjTemplate = {
         uuid: runUUID,
-        dimension: runDim,
-        theme: "dungeon",
+        dimension: runDimID,
+        current_theme: "dungeon", // todo: pick a random theme (when theres more easy ones)
         room_count: 0,
         floor_number: 1,
         players: playersInRunArray,
         alive_players: playersInRunArray,
         exhausted_rooms: []
     }
+
     // Add the initial run data obj to server data
-    server.persistentData["runs"][runUUID] = runObj
+    server.persistentData["runs"][runUUID] = runObjTemplate
+    let runObj = server.persistentData["runs"][runUUID]
+
     // Add the run uuid to every player in the run
     event.player.tell(`§bStarting run§r: ${runUUID}`)
+
+    event.player.tell(`Creating dimension "§b${runDimID}§r" for run with theme "§b${runObj.current_theme}§r"`)
+    global.createDimension(`kubejs:${runObj.current_theme}`, runDimID)
+    server.runCommandSilent(`execute in ${runDimID} run forceload add -1 -1 1 1`)
+    server.runCommandSilent(`execute in ${runDimID} run place template kubejs:lobby_dungeon 0 256 0`)
+
     event.player.tell(`§bPlayers in run§r: §a[§r${playersInRunArray.join(", ")}§a]§r`)
     playersInRunArray.forEach(uuid => {
         let curPlayer = server.getPlayer($UUID.fromString(uuid))
         curPlayer.persistentData["current_run"] = runUUID
+        server.runCommandSilent(`execute in ${runDimID} run tp ${curPlayer.name.string} 14.0 270 14.0 180 0`)
     })
-
-    // Generate dimension \`rogue:${uuid}\`
-
-
-    // Teleport players into starting room center
     return 1
 }
 
@@ -66,16 +77,18 @@ function endRun(event, runUUID) {
 
     alive_players.forEach(uuid => {
         let uuidString = uuid.getAsString()
-        let player = server.getPlayer($UUID.fromString(uuidString))
-
-        player.tell(`Run "§b${runUUID}§r" has ended.`)
-        player.persistentData["current_run"] = null
+        // TODO: Make this somehow effect offline players (if null, add to a list to clear on login?)
+        let player = server.getPlayer($UUID.fromString(uuidString)) || null
+        if (!player) {
+            server.persistentData["ended_run_players"].push(uuidString)
+            return
+        } else {
+            player.tell(`Run "§b${runUUID}§r" has ended.`)
+            player.persistentData["current_run"] = null
+        }
     })
-
-
-
-
-    return 1
+    let runDimID = `rogue:${runUUID}`
+    return global.deleteDimension(runDimID)
 }
 
 // Run debug commands

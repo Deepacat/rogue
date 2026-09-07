@@ -156,21 +156,6 @@ ServerEvents.commandRegistry(e => {
 				)
 			)
 		)
-		.then(Commands.literal("deleteDungeon")
-			.then(Commands.argument("dimensionID", Arguments.GREEDY_STRING.create(e))
-				.suggests((ctx, builder) => {
-					ctx.source.server.levelKeys().stream()
-						.filter(dim => dim.namespace == "rogue")
-						.forEach(dim => { builder.suggest(`${dim.namespace}:${dim.path}`) })
-					return builder.buildFuture()
-				})
-				.executes(ctx => {
-					let dimID = Arguments.GREEDY_STRING.getResult(ctx, "dimensionID")
-					console.log(`Deleting dimension: ${dimID}`)
-					return global.deleteDimension(dimID)
-				})
-			)
-		)
 		.then(Commands.literal("deleteDimension")
 			.then(Commands.argument("dimensionID", Arguments.GREEDY_STRING.create(e))
 				.suggests((ctx, builder) => {
@@ -183,19 +168,6 @@ ServerEvents.commandRegistry(e => {
 					return global.deleteDimension(dimID)
 				})
 			)
-		)
-		.then(Commands.literal("dunGen")
-			.executes(ctx => {
-				const { server, player, level } = ctx.source
-				let dimID = `rogue:${$UUID.randomUUID().toString()}`
-				global.createDimension("kubejs:dungeon", dimID)
-
-				let c1 = server.runCommandSilent(`execute in ${dimID} run forceload add -1 -1 1 1`)
-				let c2 = server.runCommandSilent(`execute in ${dimID} run place template kubejs:brick_lobby 0 256 0`)
-				let c3 = server.runCommandSilent(`execute in ${dimID} run tp ${player.name.string} 8 260 8 180 0`)
-
-				return (c1 && c2 && c3) ? 1 : 0
-			})
 		)
 	)
 	e.register(Commands.literal("renameHand")

@@ -1,0 +1,20 @@
+{
+	"spawn_generated": 1,
+	"runs": {
+		"aea22d5e-5aec-4627-8baa-85c0bfc3c04c": {
+			"uuid": "aea22d5e-5aec-4627-8baa-85c0bfc3c04c",
+			"dimension": "rogue:aea22d5e-5aec-4627-8baa-85c0bfc3c04c",
+			"theme": "dungeon",
+			"room_count": 0,
+			"floor_number": 1,
+			"players": [
+				"15d2f1b4-dd16-405e-a4d4-a89ecbeeb593"
+			],
+			"alive_players": [
+				"15d2f1b4-dd16-405e-a4d4-a89ecbeeb593"
+			],
+			"exhausted_rooms": []
+		}
+	},
+	"ended_run_players": []
+}
