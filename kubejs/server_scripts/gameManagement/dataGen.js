@@ -17,9 +17,7 @@ for (let [roomName, roomObj] of Object.entries(savedRooms)) {
     if (!floorThemes.includes(roomData.floor_theme)) { floorThemes.push(roomData.floor_theme) }
     if (!roomTypes.includes(roomData.room_type)) { roomTypes.push(roomData.room_type) }
 
-    // floorData[roomData.floor_theme] = floorData[roomData.floor_theme] || []
-    // floorData[roomData.floor_theme].push(roomName)
-
+    // Add rooms per room-type per floor-theme to floorData
     floorData[roomData.floor_theme] = floorData[roomData.floor_theme] || {}
     floorData[roomData.floor_theme][roomData.room_type] = floorData[roomData.floor_theme][roomData.room_type] || []
     floorData[roomData.floor_theme][roomData.room_type].push(roomName)

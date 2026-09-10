@@ -1,8 +1,9 @@
+// TODO: Remove this placeholder and get the current run data when generating
 let currentRun = {
     "floor_number": 1,
     // "players": [],
     // "alive_players": [],
-    "theme": "dungeon",
+    "current_theme": "dungeon",
     // "exhausted_rooms": [],
     "room_count": 0
 }
