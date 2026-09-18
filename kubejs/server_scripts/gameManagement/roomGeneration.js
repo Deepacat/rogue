@@ -31,6 +31,7 @@ ServerEvents.commandRegistry(e => {
  * @param {Internal.Direction} genDirection - Direction to generate the new room
  * @param {Object} runData - Current run data
  * @param {Internal.BlockRightClickedEventJS} e - Event object
+ * @returns {{min:{x:number,y:number,z:number}, max:{x:number,y:number,z:number}}} World-space bounding box corners of the generated room (including the 2 blocks of bedrock used for the door connection)
  */
 function genRoomTest(pos, genDirection, runData, e) {
     const { server, player, level } = e
@@ -80,10 +81,11 @@ function genRoomTest(pos, genDirection, runData, e) {
         doorRelZ = newZ
     }
 
-    // Get world position for the new door (adjacent to old door)
-    let offsetX = genDirection.x
-    let offsetY = genDirection.y
-    let offsetZ = genDirection.z
+    // Get the door's world position
+    let offsetX = genDirection.x * 3
+    let offsetY = 0
+    let offsetZ = genDirection.z * 3
+
     let doorWorldX = pos.x + offsetX
     let doorWorldY = pos.y + offsetY
     let doorWorldZ = pos.z + offsetZ
@@ -102,7 +104,7 @@ function genRoomTest(pos, genDirection, runData, e) {
     console.log(`Placing room with command: ${roomPlaceCommand}`)
     console.log(server.runCommandSilent(roomPlaceCommand))
 
-    /* Doorway removal */
+    /* Doorway removal, 3 wide, 4 tall, 4 deep (2 blocks of bedrock between rooms) */
     let perp = genDirection.clockWise
     let perpX = perp.x
     let perpZ = perp.z
@@ -110,14 +112,14 @@ function genRoomTest(pos, genDirection, runData, e) {
     // Positions to clear doorway
     let basePositions = [
         pos,                                                   // old door side
-        pos.offset(offsetX, offsetY, offsetZ),                 // new door side
+        pos.offset(offsetX, offsetY, offsetZ),                 // new door side (3 blocks away)
         pos.offset(perpX, 0, perpZ),                           // left of old door
         pos.offset(-perpX, 0, -perpZ),                         // right of old door
         pos.offset(offsetX + perpX, offsetY, offsetZ + perpZ), // left of new door
         pos.offset(offsetX - perpX, offsetY, offsetZ - perpZ)  // right of new door
     ]
 
-    // Calculate bounding box for the fill command
+    // Bounding box of the doorway to fill
     let minX = basePositions[0].x
     let maxX = basePositions[0].x
     let minZ = basePositions[0].z
@@ -131,11 +133,67 @@ function genRoomTest(pos, genDirection, runData, e) {
     let minY = pos.y - 1
     let maxY = pos.y + 2
 
-    server.scheduleInTicks(10, () => {
+    // Fill doorway after delay (Makes sure it's after the room is placed)
+    server.scheduleInTicks(2, () => {
         let doorFillCommand = `execute in ${level.dimension} run fill ${minX} ${minY} ${minZ} ${maxX} ${maxY} ${maxZ} minecraft:air`
         console.log(`Filling doorway with command: ${doorFillCommand}`)
         console.log(server.runCommandSilent(doorFillCommand))
     })
+
+    /* Get bounding box of generated room (including 2 blocks of bedrock gap from door) */
+    let bbSize = roomObj.bounding_box
+
+    // Rotate the 4 horizontal corners of the room's footprint into world space
+    // Local corners: (0,0), (sizeX-1, 0), (0, sizeZ-1), (sizeX-1, sizeZ-1)
+    // Rotation matches the door offset rotation: (x, z) -> (-z, x) per 90deg clockwise step
+    let localCorners = [
+        { x: 0, z: 0 },
+        { x: bbSize.x - 1, z: 0 },
+        { x: 0, z: bbSize.z - 1 },
+        { x: bbSize.x - 1, z: bbSize.z - 1 }
+    ]
+    let worldCorners = []
+    for (let c of localCorners) {
+        let rx = c.x
+        let rz = c.z
+        for (let i = 0; i < delta; i++) {
+            let newX = -rz
+            let newZ = rx
+            rx = newX
+            rz = newZ
+        }
+        worldCorners.push({ x: originX + rx, z: originZ + rz })
+    }
+
+    // Get min/max of rotated corners to form the room AABB
+    let roomMinX = worldCorners[0].x
+    let roomMaxX = worldCorners[0].x
+    let roomMinZ = worldCorners[0].z
+    let roomMaxZ = worldCorners[0].z
+    for (let c of worldCorners) {
+        if (c.x < roomMinX) roomMinX = c.x
+        if (c.x > roomMaxX) roomMaxX = c.x
+        if (c.z < roomMinZ) roomMinZ = c.z
+        if (c.z > roomMaxZ) roomMaxZ = c.z
+    }
+
+    let roomMinY = originY
+    let roomMaxY = originY + bbSize.y - 1
+
+    // Extend room AABB by 2 blocks on the door-facing side (toward the old room)
+    // to include the 2 blocks of bedrock used for the door connection
+    if (genDirection.x > 0) roomMinX -= 2
+    else if (genDirection.x < 0) roomMaxX += 2
+    if (genDirection.z > 0) roomMinZ -= 2
+    else if (genDirection.z < 0) roomMaxZ += 2
+
+    let boundingBoxWithDoor = {
+        bottom: { x: roomMinX, y: roomMinY, z: roomMinZ },
+        top: { x: roomMaxX, y: roomMaxY, z: roomMaxZ }
+    }
+    console.log(`Bounding box with door:`)
+    console.log(boundingBoxWithDoor)
+    return boundingBoxWithDoor
 }
 
 BlockEvents.rightClicked("kubejs:door_data", e => {

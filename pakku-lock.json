@@ -978,42 +978,6 @@
             ]
         },
         {
-            "pakku_id": "DN98SSLMxFhlLBHq",
-            "type": "MOD",
-            "slug": {
-                "curseforge": "concurrent-chunk-management-engine-forge"
-            },
-            "name": {
-                "curseforge": "Concurrent Chunk Management Engine - Forge"
-            },
-            "id": {
-                "curseforge": "1610389"
-            },
-            "files": [
-                {
-                    "type": "curseforge",
-                    "file_name": "c2meforge-0.2.0-forge.9.3-all.jar",
-                    "mc_versions": [
-                        "1.20.1"
-                    ],
-                    "loaders": [
-                        "forge"
-                    ],
-                    "release_type": "beta",
-                    "url": "https://edge.forgecdn.net/files/8897/714/c2meforge-0.2.0-forge.9.3-all.jar",
-                    "id": "8897714",
-                    "parent_id": "1610389",
-                    "hashes": {
-                        "sha1": "bf440b9e0288730deb131fccae90fef375c2a8f7",
-                        "md5": "4624c716795f6173745ff0db9040b695"
-                    },
-                    "required_dependencies": [],
-                    "size": 1326539,
-                    "date_published": "2026-09-16T18:32:46.190Z"
-                }
-            ]
-        },
-        {
             "pakku_id": "To1e9uBjR3o52XnS",
             "type": "MOD",
             "slug": {
@@ -1779,6 +1743,84 @@
                     ],
                     "size": 26174393,
                     "date_published": "2026-08-15T05:56:34.597Z"
+                }
+            ]
+        },
+        {
+            "pakku_id": "cRZiJva0Xo5b1h11",
+            "type": "MOD",
+            "slug": {
+                "curseforge": "zfastnoise"
+            },
+            "name": {
+                "curseforge": "Fast Noise"
+            },
+            "id": {
+                "curseforge": "1460602"
+            },
+            "files": [
+                {
+                    "type": "curseforge",
+                    "file_name": "zfastnoise-1.0.13+1.20+forge.jar",
+                    "mc_versions": [
+                        "1.20.2",
+                        "1.20.5",
+                        "1.20.1",
+                        "1.20",
+                        "1.20.6",
+                        "1.20.4",
+                        "1.20.3"
+                    ],
+                    "loaders": [
+                        "forge"
+                    ],
+                    "release_type": "release",
+                    "url": "https://edge.forgecdn.net/files/8398/218/zfastnoise-1.0.13+1.20+forge.jar",
+                    "id": "8398218",
+                    "parent_id": "1460602",
+                    "hashes": {
+                        "sha1": "94461ab36f5bfec54f10b13f5fde40c7586a2a0e",
+                        "md5": "1af6d9d869dd98cb68e173ac59fcfa92"
+                    },
+                    "required_dependencies": [],
+                    "size": 666300,
+                    "date_published": "2026-07-09T05:13:18.313Z"
+                }
+            ]
+        },
+        {
+            "pakku_id": "OBvk1Whq3nLc2OjD",
+            "type": "MOD",
+            "slug": {
+                "curseforge": "fastchunkgen"
+            },
+            "name": {
+                "curseforge": "FastChunkGen"
+            },
+            "id": {
+                "curseforge": "1628827"
+            },
+            "files": [
+                {
+                    "type": "curseforge",
+                    "file_name": "fastchunkgen-0.27-all.jar",
+                    "mc_versions": [
+                        "1.20.1"
+                    ],
+                    "loaders": [
+                        "forge"
+                    ],
+                    "release_type": "release",
+                    "url": "https://edge.forgecdn.net/files/8897/646/fastchunkgen-0.27-all.jar",
+                    "id": "8897646",
+                    "parent_id": "1628827",
+                    "hashes": {
+                        "sha1": "f998f48f69ff0430248ad358f6f112663652c342",
+                        "md5": "49f6ff2c1ebd8778df034a99246e5ac8"
+                    },
+                    "required_dependencies": [],
+                    "size": 1249446,
+                    "date_published": "2026-09-16T18:23:17.740Z"
                 }
             ]
         },
@@ -3904,6 +3946,43 @@
                     ],
                     "size": 14935230,
                     "date_published": "2025-04-16T02:35:10.557Z"
+                }
+            ]
+        },
+        {
+            "pakku_id": "4IfqtPbyRaJwpP0P",
+            "type": "MOD",
+            "slug": {
+                "curseforge": "radium-reforged"
+            },
+            "name": {
+                "curseforge": "Radium Reforged"
+            },
+            "id": {
+                "curseforge": "570017"
+            },
+            "files": [
+                {
+                    "type": "curseforge",
+                    "file_name": "radium-mc1.20.1-0.12.4+git.26c9d8e.jar",
+                    "mc_versions": [
+                        "1.20.1"
+                    ],
+                    "loaders": [
+                        "neoforge",
+                        "forge"
+                    ],
+                    "release_type": "release",
+                    "url": "https://edge.forgecdn.net/files/5706/69/radium-mc1.20.1-0.12.4+git.26c9d8e.jar",
+                    "id": "5706069",
+                    "parent_id": "570017",
+                    "hashes": {
+                        "sha1": "f5f5f792473bb7b85ec221f75c5afb3740afb13a",
+                        "md5": "3a46fb58e8ff12213e4dbc909f47a77d"
+                    },
+                    "required_dependencies": [],
+                    "size": 713454,
+                    "date_published": "2024-09-09T08:07:43.540Z"
                 }
             ]
         },
