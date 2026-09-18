@@ -128,16 +128,12 @@ function detectRooms(ctx, Commands, Arguments, radiusOverride) {
 		// Store min coordinates for later filtering if needed
 		roomMinCoords[roomId] = { minX: minX, minY: minY, minZ: minZ }
 
-		let spawners = foundBlocks
+		let spawnerCount = foundBlocks
 			.filter(block => {
 				if (block.type !== "minecraft:spawner") return false
 				let [x, y, z] = block.pos
 				return x >= minX && x <= maxX && y >= minY && y <= maxY && z >= minZ && z <= maxZ
-			})
-			.map(block => ({
-				pos: { x: block.pos[0] - minX, y: block.pos[1] - minY, z: block.pos[2] - minZ }
-			}))
-		console.log(`Found ${spawners.length} spawners in room ${roomId}`)
+			}).length
 
 		// Find door markers inside this bounding box
 		let doors = foundBlocks
@@ -155,7 +151,6 @@ function detectRooms(ctx, Commands, Arguments, radiusOverride) {
 					z: block.pos[2] - minZ
 				}
 			}))
-		console.log(`Found ${doors.length} door markers in room ${roomId}`)
 
 		// Find room_data blocks inside this bounding box and track indices
 		let roomDataIndices = []
@@ -204,6 +199,7 @@ function detectRooms(ctx, Commands, Arguments, radiusOverride) {
 		foundRooms[roomId] = {
 			room_id: roomId,
 			bounding_box: boundingBox,
+			spawner_count: spawnerCount,
 			room_data: roomData,
 			doors: doors
 		}
