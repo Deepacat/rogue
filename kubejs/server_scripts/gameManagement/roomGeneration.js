@@ -100,7 +100,7 @@ function genRoomTest(pos, genDirection, runData, e) {
 
     let roomPlaceCommand = `execute in ${level.dimension} run place template ${randomRoom} ${originX} ${originY} ${originZ} ${rotationCommand}`
     console.log(`Placing room with command: ${roomPlaceCommand}`)
-    server.runCommandSilent(roomPlaceCommand)
+    console.log(server.runCommandSilent(roomPlaceCommand))
 
     /* Doorway removal */
     let perp = genDirection.clockWise
@@ -131,8 +131,11 @@ function genRoomTest(pos, genDirection, runData, e) {
     let minY = pos.y - 1
     let maxY = pos.y + 2
 
-    let doorFillCommand = `execute in ${level.dimension} run fill ${minX} ${minY} ${minZ} ${maxX} ${maxY} ${maxZ} minecraft:air`
-    server.runCommandSilent(doorFillCommand)
+    server.scheduleInTicks(10, () => {
+        let doorFillCommand = `execute in ${level.dimension} run fill ${minX} ${minY} ${minZ} ${maxX} ${maxY} ${maxZ} minecraft:air`
+        console.log(`Filling doorway with command: ${doorFillCommand}`)
+        console.log(server.runCommandSilent(doorFillCommand))
+    })
 }
 
 BlockEvents.rightClicked("kubejs:door_data", e => {

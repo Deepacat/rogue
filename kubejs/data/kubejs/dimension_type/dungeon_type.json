@@ -7,7 +7,7 @@
   "has_raids": false,
   "has_skylight": true,
   "infiniburn": "#minecraft:infiniburn_overworld",
-  "height": 2032, // highest possible
+  "height": 2032, // highest possible is 2032
   "logical_height": 2032,
   "min_y": 0,
   "monster_spawn_block_light_limit": 15,

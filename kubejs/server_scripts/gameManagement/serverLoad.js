@@ -11,6 +11,12 @@ ServerEvents.loaded(e => {
     server.runCommandSilent(`execute in kubejs:lobby run place template kubejs:main_lobby 0 0 0`)
 })
 
+LevelEvents.loaded(e => {
+    const { level } = e
+    // Run tickfix on level load
+    fixScheduledTicks(level.server)
+})
+
 ServerEvents.loaded(e => {
     const { server } = e
     const serverData = server.persistentData
@@ -19,8 +25,8 @@ ServerEvents.loaded(e => {
     fixScheduledTicks(server)
 })
 
-// Run tickfix on server load/reload (Probably won't work on first serverload but works on reloads, so it's in event and outside)
-fixScheduledTicks(Utils.server)
+// Run tickfix on server reloads
+if (Utils.server != null) fixScheduledTicks(Utils.server)
 
 /**
  * Runs a scheduled tick in every dimension. This should hopefully fix an issue with KubeJS

@@ -9,7 +9,7 @@
       "layers": [
         {
           "height": 1,
-          "block": "minecraft:air"
+          "block": "minecraft:bedrock"
         }
       ]
     }

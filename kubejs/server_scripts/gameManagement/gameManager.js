@@ -23,7 +23,7 @@ function startRun(event, startPos) {
     let runUUID = $UUID.randomUUID().toString()
     let runDimID = `rogue:${runUUID}`
 
-    // Get position and make a bounding box for entity detection
+    // Get a box around player for detecting other players to add to run
     let tpBox = AABB.ofBlock(new BlockPos(startPos.x, startPos.y, startPos.z)).inflate(3)
 
     // Get players within the bounding box
@@ -31,14 +31,24 @@ function startRun(event, startPos) {
 
     // Template run object for tracking data related to the run
     let runObjTemplate = {
-        uuid: runUUID,
-        dimension: runDimID,
-        current_theme: "dungeon", // todo: pick a random theme (when theres more easy ones)
-        room_count: 0,
-        floor_number: 1,
-        players: playersInRunArray,
-        alive_players: playersInRunArray,
-        exhausted_rooms: []
+        "dimension": runDimID, // The dimension for the run (`rogue:${runUUID}`)
+        "current_theme": "dungeon", // TODO: pick a random theme (when theres more easy ones)
+        "room_count": 0, // Counter of how many rooms have generated per floor (0 lobby), resets on new floor
+        "floor_number": 1, // The floor number
+
+        // TODO: implement these 2 when making better room gen
+        "generated_boxes": [], // List of all room bounding boxes that are currently generated (To prevent overlaps) (Rooms maybe cleared to free up space)
+        "exhausted_rooms": [], // List of rooms that have already been generated for the floor (To later prevent duplicate rooms)
+
+        "starting_players": playersInRunArray, // List of players present when run began
+        "alive_players": playersInRunArray, // List of currently alive players in the run (Including logged out players)
+        "dead_players": [], // Players that have fully died and are spectating
+
+        // TODO: Make conquer status system, room data should be the rooms data obj which included the spawner % req and total spawners
+        "current_room": { // The current newest generated room, tracks spawners for room conquer status
+            "room_data": {},
+            "spawners_mined": 0,
+        }
     }
 
     // Add the initial run data obj to server data

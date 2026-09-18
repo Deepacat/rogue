@@ -389,8 +389,59 @@
 			}
 		]
 	},
-	"kubejs:longhalltestfordeepa": {
-		"room_id": "kubejs:longhalltestfordeepa",
+	"kubejs:lobby_dungeon": {
+		"room_id": "kubejs:lobby_dungeon",
+		"bounding_box": {
+			"x": 28,
+			"y": 28,
+			"z": 28
+		},
+		"room_data": {
+			"spawners_required": 0.9,
+			"floor_theme": "dungeon",
+			"room_type": "lobby"
+		},
+		"doors": [
+			{
+				"facing": "south",
+				"door_type": "any",
+				"pos": {
+					"x": 13,
+					"y": 6,
+					"z": 0
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 0,
+					"y": 6,
+					"z": 14
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 27,
+					"y": 6,
+					"z": 13
+				}
+			},
+			{
+				"facing": "north",
+				"door_type": "any",
+				"pos": {
+					"x": 14,
+					"y": 6,
+					"z": 27
+				}
+			}
+		]
+	},
+	"kubejs:vinnyalonghalltest": {
+		"room_id": "kubejs:vinnyalonghalltest",
 		"bounding_box": {
 			"x": 29,
 			"y": 15,
@@ -535,57 +586,6 @@
 					"x": 28,
 					"y": 8,
 					"z": 40
-				}
-			}
-		]
-	},
-	"kubejs:lobby_dungeon": {
-		"room_id": "kubejs:lobby_dungeon",
-		"bounding_box": {
-			"x": 28,
-			"y": 28,
-			"z": 28
-		},
-		"room_data": {
-			"spawners_required": 0.9,
-			"floor_theme": "dungeon",
-			"room_type": "lobby"
-		},
-		"doors": [
-			{
-				"facing": "south",
-				"door_type": "any",
-				"pos": {
-					"x": 13,
-					"y": 6,
-					"z": 0
-				}
-			},
-			{
-				"facing": "east",
-				"door_type": "any",
-				"pos": {
-					"x": 0,
-					"y": 6,
-					"z": 14
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 27,
-					"y": 6,
-					"z": 13
-				}
-			},
-			{
-				"facing": "north",
-				"door_type": "any",
-				"pos": {
-					"x": 14,
-					"y": 6,
-					"z": 27
 				}
 			}
 		]

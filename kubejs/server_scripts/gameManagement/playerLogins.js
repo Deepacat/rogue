@@ -8,7 +8,7 @@ PlayerEvents.loggedIn(e => {
     if (playerJoinedBefore == false) {
         playerData['first_join'] = true
         playerData['current_run'] = null
-        server.runCommandSilent(`execute in kubejs:lobby run spawnpoint ${player.name.string} 8 5 8 180`)
+        server.runCommandSilent(`execute in kubejs:lobby run spawnpoint ${player.name.string} 16.0 5 16.0 180`)
         server.runCommandSilent(`execute in kubejs:lobby run tp ${player.name.string} 16.0 6 16.0 180 0`)
     }
 
@@ -20,7 +20,7 @@ PlayerEvents.loggedIn(e => {
         endedRunPlayers.removeIf(p => p == player.stringUuid)
         server.persistentData["ended_run_players"] = endedRunPlayers // Remove the serverside data that stores players that were offline when a run ended
         player.persistentData["current_run"] = null // Remove current run from player data
-        server.runCommandSilent(`execute in kubejs:lobby run spawnpoint ${player.name.string} 8 5 8 180`)
+        server.runCommandSilent(`execute in kubejs:lobby run spawnpoint ${player.name.string} 16.0 5 16.0 180`)
         server.runCommandSilent(`execute in kubejs:lobby run tp ${player.name.string} 16.0 6 16.0 180 0`)
         console.log(`Player ${player.name.string} has relogged from an ended run and was reset`)
     }
