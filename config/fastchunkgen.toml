@@ -28,8 +28,6 @@ globalExecutorParallelism = "default"
 	# (Default: true) Optimize chunk task scheduling.
 	optimizeScheduling = "default"
 	# (Default: 100000) Nanoseconds between chunk tasks run inside the tick loop. -1 disables.
-	# Set to -1 for the following reasons: 
-	# Incompatible with dimthread@1.2.1 (*) (defined in fastchunkgen) 
 	midTickChunkTasksInterval = "default"
 
 	[generalOptimizations.autoSave]

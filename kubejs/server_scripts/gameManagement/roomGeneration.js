@@ -180,8 +180,8 @@ function genRoomTest(pos, genDirection, runData, e) {
     let roomMinY = originY
     let roomMaxY = originY + bbSize.y - 1
 
-    // Extend room AABB by 2 blocks on the door-facing side (toward the old room)
-    // to include the 2 blocks of bedrock used for the door connection
+    /* Extend room bounding box by 2 blocks on the door-facing side (toward the previous room)
+       to include the 2 blocks of bedrock used for the door connection */
     if (genDirection.x > 0) roomMinX -= 2
     else if (genDirection.x < 0) roomMaxX += 2
     if (genDirection.z > 0) roomMinZ -= 2
@@ -200,5 +200,6 @@ BlockEvents.rightClicked("kubejs:door_data", e => {
     let blockState = e.level.getBlockState(e.block.pos)
     let facingProp = blockState.getValues().get(BlockProperties.HORIZONTAL_FACING)
     let outwardDir = $Direction.valueOf(facingProp.toString().toUpperCase()).getOpposite()
+    e.server.runCommandSilent(`execute in ${e.level.dimension} run setblock ${e.block.pos.x} ${e.block.pos.y} ${e.block.pos.z} minecraft:bedrock`)
     genRoomTest(e.block.pos, outwardDir, currentRun, e)
 })

@@ -17,19 +17,18 @@ function detectRooms(ctx, Commands, Arguments, radiusOverride) {
 
 	let foundRooms = {} // Object to store room data (keyed by room_id)
 	let foundBlocks = [] // Array to add nearby found blocks to
-	let matchBlocks = ["kubejs:room_corner", "kubejs:door_data", "kubejs:room_data", "minecraft:structure_block"]
+	// Blocks that should be searched for within detection range to save data for 
+	let matchBlocks = ["kubejs:room_corner", "kubejs:door_data", "kubejs:room_data", "minecraft:structure_block", "minecraft:spawner"]
 
 	// Loops over every chunk position in range
-	for (let dx of map) { for (let dz of map) {
+	for (let dx of map) {
+		for (let dz of map) {
 			let chunk = level.getChunkAt(pos.offset(dx * 16, 0, dz * 16))
 			chunk["findBlocks(java.util.function.BiPredicate,java.util.function.BiConsumer)"](
 				(blockState, blockPos) => {
 					let matched = false
 					for (let checkBlock of matchBlocks) {
-						if (blockState.block.id.toString() == checkBlock) {
-							matched = true
-							break
-						}
+						if (blockState.block.id.toString() == checkBlock) { matched = true; break }
 					}
 					return matched
 				},
@@ -41,28 +40,32 @@ function detectRooms(ctx, Commands, Arguments, radiusOverride) {
 						case "kubejs:room_corner": {
 							let roomID = block.entityData?.data?.room
 							if (!roomID) return
-							console.log(`Adding block: ${JSON.stringify({ type: blockID, data: { room_id: roomID }, pos: [x, y, z] })}`)
+							// console.log(`Adding block: ${JSON.stringify({ type: blockID, data: { room_id: roomID }, pos: [x, y, z] })}`)
 							foundBlocks.push({ type: blockID, data: { room_id: roomID }, pos: [x, y, z] })
 							break
 						}
 						case "kubejs:door_data": {
 							let facing = blockState.getValues().get(BlockProperties.HORIZONTAL_FACING).toString()
 							let doorType = block.entityData?.data?.door_type
-							console.log(`Adding block: ${JSON.stringify({ type: blockID, data: { facing: facing }, pos: [x, y, z] })}`)
+							// console.log(`Adding block: ${JSON.stringify({ type: blockID, data: { facing: facing }, pos: [x, y, z] })}`)
 							foundBlocks.push({ type: blockID, data: { facing: facing, door_type: doorType }, pos: [x, y, z] })
 							break
 						}
 						case "kubejs:room_data": {
 							let roomData = global.nbtToObject(block.entityData?.data)
-							console.log(`Adding block: ${JSON.stringify({ type: blockID, data: roomData, pos: [x, y, z] })}`)
+							// console.log(`Adding block: ${JSON.stringify({ type: blockID, data: roomData, pos: [x, y, z] })}`)
 							foundBlocks.push({ type: blockID, data: roomData, pos: [x, y, z] })
 							break
 						}
 						case "minecraft:structure_block": {
 							let structureName = block.entityData.name != "" ? block.entityData.name : undefined
 							if (!structureName) return
-							console.log(`Adding block: ${JSON.stringify({ type: blockID, data: { structure_name: structureName }, pos: [x, y, z] })}`)
+							// console.log(`Adding block: ${JSON.stringify({ type: blockID, data: { structure_name: structureName }, pos: [x, y, z] })}`)
 							foundBlocks.push({ type: blockID, data: { structure_name: structureName }, pos: [x, y, z] })
+							break
+						}
+						case "minecraft:spawner": {
+							foundBlocks.push({ type: blockID, pos: [x, y, z] })
 							break
 						}
 						default:
@@ -70,7 +73,8 @@ function detectRooms(ctx, Commands, Arguments, radiusOverride) {
 					}
 				}
 			)
-		}}
+		}
+	}
 
 	// Group corner markers by room ID
 	let cornerGroups = {}
@@ -124,6 +128,17 @@ function detectRooms(ctx, Commands, Arguments, radiusOverride) {
 		// Store min coordinates for later filtering if needed
 		roomMinCoords[roomId] = { minX: minX, minY: minY, minZ: minZ }
 
+		let spawners = foundBlocks
+			.filter(block => {
+				if (block.type !== "minecraft:spawner") return false
+				let [x, y, z] = block.pos
+				return x >= minX && x <= maxX && y >= minY && y <= maxY && z >= minZ && z <= maxZ
+			})
+			.map(block => ({
+				pos: { x: block.pos[0] - minX, y: block.pos[1] - minY, z: block.pos[2] - minZ }
+			}))
+		console.log(`Found ${spawners.length} spawners in room ${roomId}`)
+
 		// Find door markers inside this bounding box
 		let doors = foundBlocks
 			.filter(block => {
@@ -140,15 +155,15 @@ function detectRooms(ctx, Commands, Arguments, radiusOverride) {
 					z: block.pos[2] - minZ
 				}
 			}))
+		console.log(`Found ${doors.length} door markers in room ${roomId}`)
 
 		// Find room_data blocks inside this bounding box and track indices
 		let roomDataIndices = []
-		for (let i = 0; i < foundBlocks.length; i++) {
-			let block = foundBlocks[i]
+		for (let block of foundBlocks) {
 			if (block.type === "kubejs:room_data") {
 				let [x, y, z] = block.pos
 				if (x >= minX && x <= maxX && y >= minY && y <= maxY && z >= minZ && z <= maxZ) {
-					roomDataIndices.push(i)
+					roomDataIndices.push(foundBlocks.indexOf(block))
 				}
 			}
 		}
@@ -186,21 +201,11 @@ function detectRooms(ctx, Commands, Arguments, radiusOverride) {
 			z: maxZ - minZ + 1
 		}
 
-		console.log(`Adding room: ${JSON.stringify({ room_id: roomId, bounding_box: boundingBox, room_data: roomData, doors: doors })}`)
 		foundRooms[roomId] = {
 			room_id: roomId,
 			bounding_box: boundingBox,
 			room_data: roomData,
 			doors: doors
-		}
-	}
-
-	// After all rooms processed, check for room_data blocks outside any room
-	for (let i = 0; i < foundBlocks.length; i++) {
-		if (foundBlocks[i].type === "kubejs:room_data" && !usedRoomDataIndices.has(i)) {
-			let warnMsg = `Room data block at [${foundBlocks[i].pos}] is outside any room bounds.`
-			console.warn(warnMsg)
-			player.tell(`§e${warnMsg}`)
 		}
 	}
 
@@ -223,7 +228,7 @@ function detectRooms(ctx, Commands, Arguments, radiusOverride) {
 		}
 	}
 
-	player.tell(`Finished searching nearby rooms, added §a${Object.keys(foundRooms).length}§r rooms`)
+	player.tell(`Finished searching nearby rooms, added §a${Object.keys(foundRooms).map(roomId => foundRooms[roomId].room_id).join(", ")}§r (§b${Object.keys(foundRooms).length}§r total)`)
 	player.tell(`check §bminecraft/logs/kubejs/server.log§r for details`)
 
 	let existingRooms = JsonIO.read('kubejs/script_data/saved_rooms.json') || {}

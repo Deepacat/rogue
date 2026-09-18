@@ -6,9 +6,10 @@
 			"y": 14,
 			"z": 31
 		},
+		"spawner_count": 0,
 		"room_data": {
-			"spawners_required": 0.9,
 			"floor_theme": "dungeon",
+			"spawners_required": 0.9,
 			"room_type": "normal"
 		},
 		"doors": [
@@ -58,8 +59,8 @@
 			"z": 35
 		},
 		"room_data": {
-			"spawners_required": 0.9,
 			"floor_theme": "dungeon",
+			"spawners_required": 0.9,
 			"room_type": "normal"
 		},
 		"doors": [
@@ -397,8 +398,8 @@
 			"z": 28
 		},
 		"room_data": {
-			"spawners_required": 0.9,
 			"floor_theme": "dungeon",
+			"spawners_required": 0.9,
 			"room_type": "lobby"
 		},
 		"doors": [
@@ -586,6 +587,240 @@
 					"x": 28,
 					"y": 8,
 					"z": 40
+				}
+			}
+		]
+	},
+	"kubejs:longhalltestfordeepa": {
+		"room_id": "kubejs:longhalltestfordeepa",
+		"bounding_box": {
+			"x": 29,
+			"y": 15,
+			"z": 48
+		},
+		"room_data": {
+			"floor_theme": "dungeon",
+			"spawners_required": 0.9,
+			"room_type": "normal"
+		},
+		"doors": [
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 0,
+					"y": 8,
+					"z": 2
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 0,
+					"y": 8,
+					"z": 10
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 0,
+					"y": 8,
+					"z": 18
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 0,
+					"y": 8,
+					"z": 26
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 0,
+					"y": 8,
+					"z": 34
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 0,
+					"y": 8,
+					"z": 40
+				}
+			},
+			{
+				"facing": "north",
+				"door_type": "any",
+				"pos": {
+					"x": 7,
+					"y": 8,
+					"z": 47
+				}
+			},
+			{
+				"facing": "south",
+				"door_type": "any",
+				"pos": {
+					"x": 14,
+					"y": 8,
+					"z": 0
+				}
+			},
+			{
+				"facing": "north",
+				"door_type": "any",
+				"pos": {
+					"x": 21,
+					"y": 8,
+					"z": 47
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 28,
+					"y": 8,
+					"z": 2
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 28,
+					"y": 8,
+					"z": 10
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 28,
+					"y": 8,
+					"z": 18
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 28,
+					"y": 8,
+					"z": 26
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 28,
+					"y": 8,
+					"z": 34
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 28,
+					"y": 8,
+					"z": 40
+				}
+			}
+		]
+	},
+	"kubejs:large_tester": {
+		"room_id": "kubejs:large_tester",
+		"bounding_box": {
+			"x": 32,
+			"y": 16,
+			"z": 32
+		},
+		"room_data": {
+			"floor_theme": "dungeon",
+			"spawners_required": 0.9,
+			"room_type": "normal"
+		},
+		"doors": [
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 1,
+					"y": 11,
+					"z": 15
+				}
+			},
+			{
+				"facing": "south",
+				"door_type": "any",
+				"pos": {
+					"x": 25,
+					"y": 8,
+					"z": 1
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 30,
+					"y": 4,
+					"z": 27
+				}
+			}
+		]
+	},
+	"rogue:test_room": {
+		"room_id": "rogue:test_room",
+		"bounding_box": {
+			"x": 11,
+			"y": 18,
+			"z": 11
+		},
+		"room_data": {
+			"floor_theme": "dungeon",
+			"spawners_required": 0.9,
+			"room_type": "normal"
+		},
+		"doors": [
+			{
+				"facing": "south",
+				"door_type": "any",
+				"pos": {
+					"x": 6,
+					"y": 6,
+					"z": 0
+				}
+			},
+			{
+				"facing": "north",
+				"door_type": "any",
+				"pos": {
+					"x": 5,
+					"y": 2,
+					"z": 10
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 10,
+					"y": 13,
+					"z": 7
 				}
 			}
 		]

@@ -3,7 +3,10 @@
 		"normal": [
 			"kubejs:vinnyacornertest",
 			"kubejs:vinnya36doortest",
-			"kubejs:vinnyalonghalltest"
+			"kubejs:vinnyalonghalltest",
+			"kubejs:longhalltestfordeepa",
+			"kubejs:large_tester",
+			"rogue:test_room"
 		],
 		"lobby": [
 			"kubejs:lobby_dungeon"
