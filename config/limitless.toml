@@ -1,0 +1,22 @@
+
+[server]
+	#Max length for normal public chat messages.
+	#Range: -1 ~ 32500
+	max_chat_length = 500
+	#Max length for commands (starting with '/'). Usually set much higher or -1.
+	#Range: -1 ~ 32500
+	max_command_length = 32500
+	#Whether to enable long commands exceeding 256 characters.
+	enable_long_commands = true
+	#The permission node required to bypass the max message length limit. If set to an empty string, the permission check is bypassed completely.
+	permission_required = "limitless.bypass"
+
+[client]
+	#The tick delay (1s = 20 ticks) between chunked messages sent to vanilla/unmodded servers to prevent anti-spam kicks.
+	#Range: 5 ~ 200
+	client_tick_delay = 25
+	#When to show the character counter in the chat box. Valid options: "ALWAYS", "ONLY_WHEN_EXCEEDED", or "NEVER"
+	show_character_counter = "ALWAYS"
+	#State of whether the welcome message was shown.
+	welcome_message_shown = true
+

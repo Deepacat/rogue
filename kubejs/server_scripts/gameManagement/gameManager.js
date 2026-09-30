@@ -8,13 +8,22 @@ let currentRun = {
     "room_count": 0
 }
 
+/** @param {Internal.Player} startingPlayer */
+function getPlayersForRun(startingPlayer) {
+    let { x, y, z, level } = startingPlayer
+    // Get a box around player for detecting other players to add to run
+    let tpBox = AABB.ofBlock(new BlockPos(x, y, z)).inflate(3)
+    // Get players within the bounding box
+    let playersInRunArray = level.getEntitiesOfClass($Player, tpBox).map(p => p.stringUuid)
+    return playersInRunArray
+}
+
 /**
  * @param {Internal.CommandSourceStack} event 
  * @param {Internal.Vec3d} startPos 
  * @returns {number} */
 function startRun(event, startPos) {
     const { server, level } = event
-    const startingPlayer = event.player
 
     // Run can only be started from the lobby dimension (shouldn't happy outside of it realistically)
     if (level.dimension != "kubejs:lobby") { console.log("Run failed to start, player not in lobby dimension."); return 0 }
@@ -23,11 +32,13 @@ function startRun(event, startPos) {
     let runUUID = $UUID.randomUUID().toString()
     let runDimID = `rogue:${runUUID}`
 
-    // Get a box around player for detecting other players to add to run
-    let tpBox = AABB.ofBlock(new BlockPos(startPos.x, startPos.y, startPos.z)).inflate(3)
+    // // Get a box around player for detecting other players to add to run
+    // let tpBox = AABB.ofBlock(new BlockPos(startPos.x, startPos.y, startPos.z)).inflate(3)
 
-    // Get players within the bounding box
-    let playersInRunArray = level.getEntitiesOfClass($Player, tpBox).map(p => p.stringUuid)
+    // // Get players within the bounding box
+    // let playersInRunArray = level.getEntitiesOfClass($Player, tpBox).map(p => p.stringUuid)
+
+    let playersInRunArray = getPlayersForRun(event.player)
 
     // Template run object for tracking data related to the run
     let runObjTemplate = {

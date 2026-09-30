@@ -1,5 +1,7 @@
 // priority: 100
 
+// World generation code mostly taken from Gcats Gambleth modpack
+
 /**
  * @param {string} dimensionCopyID The ID of the dimension to copy the world generation of for the new dimension
  * @param {string} newGeneratedDimID The ID of the newly generated dimension

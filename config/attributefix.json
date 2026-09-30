@@ -198,17 +198,6 @@
         "value": 100
       }
     },
-    "alembic:true_damage.resistance": {
-      "enabled": false,
-      "min": {
-        "default": -1024,
-        "value": -1024
-      },
-      "max": {
-        "default": 1024,
-        "value": 1024
-      }
-    },
     "irons_spellbooks:cast_time_reduction": {
       "enabled": false,
       "min": {
@@ -218,6 +207,17 @@
       "max": {
         "default": 100,
         "value": 100
+      }
+    },
+    "alembic:true_damage.resistance": {
+      "enabled": false,
+      "min": {
+        "default": -1024,
+        "value": -1024
+      },
+      "max": {
+        "default": 1024,
+        "value": 1024
       }
     },
     "bcattributes:dual_wielding_main_hand_damage_multiplier": {
@@ -385,17 +385,6 @@
         "value": 1000
       }
     },
-    "alembic:alchemical_damage.absorption": {
-      "enabled": false,
-      "min": {
-        "default": 0,
-        "value": 0
-      },
-      "max": {
-        "default": 1024,
-        "value": 1024
-      }
-    },
     "irons_spellbooks:evocation_spell_power": {
       "enabled": false,
       "min": {
@@ -405,6 +394,17 @@
       "max": {
         "default": 100,
         "value": 100
+      }
+    },
+    "alembic:alchemical_damage.absorption": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 1024,
+        "value": 1024
       }
     },
     "alembic:true_damage.shielding": {
@@ -737,17 +737,6 @@
         "value": 1024
       }
     },
-    "alembic:fire_damage.resistance": {
-      "enabled": false,
-      "min": {
-        "default": -1024,
-        "value": -1024
-      },
-      "max": {
-        "default": 1024,
-        "value": 1024
-      }
-    },
     "irons_spellbooks:fire_spell_power": {
       "enabled": false,
       "min": {
@@ -757,6 +746,17 @@
       "max": {
         "default": 100,
         "value": 100
+      }
+    },
+    "alembic:fire_damage.resistance": {
+      "enabled": false,
+      "min": {
+        "default": -1024,
+        "value": -1024
+      },
+      "max": {
+        "default": 1024,
+        "value": 1024
       }
     },
     "fluffy_fur:size_scale": {
@@ -979,17 +979,6 @@
         "value": 1024
       }
     },
-    "alembic:arcane_damage": {
-      "enabled": false,
-      "min": {
-        "default": 0,
-        "value": 0
-      },
-      "max": {
-        "default": 1024,
-        "value": 1024
-      }
-    },
     "irons_spellbooks:fire_magic_resist": {
       "enabled": false,
       "min": {
@@ -1010,6 +999,17 @@
       "max": {
         "default": 100,
         "value": 100
+      }
+    },
+    "alembic:arcane_damage": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 1024,
+        "value": 1024
       }
     },
     "irons_spellbooks:ender_spell_power": {
