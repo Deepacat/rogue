@@ -1,6 +1,8 @@
 version = 3
 # (Default: 4) Worker threads used for chunk generation and IO.
 globalExecutorParallelism = "default"
+# (Default: 32) Highest view/render distance allowed (vanilla caps at 32, max 125). Higher values need more memory.
+maxViewDistance = "default"
 
 [fixes]
 	# (Default: true) Remove the log4j2 shutdown hook so shutdown logs survive, and force exit if a dedicated server hangs.

@@ -1,8 +1,8 @@
 {
 	"server_first_load": 0,
 	"runs": {
-		"cdc31d25-ed14-486a-9a44-9e185b53791e": {
-			"dimension": "rogue:cdc31d25-ed14-486a-9a44-9e185b53791e",
+		"4f49ad4f-f744-446a-8f16-7c88f17c327b": {
+			"dimension": "rogue:4f49ad4f-f744-446a-8f16-7c88f17c327b",
 			"current_theme": "dungeon",
 			"room_count": 0,
 			"floor_number": 1,
@@ -21,5 +21,6 @@
 			}
 		}
 	},
-	"ended_run_players": []
+	"ended_run_players": [],
+	"spawn_generated": 1
 }

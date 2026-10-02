@@ -1,0 +1,32 @@
+{
+  "_WARNING": "USE AT YOUR OWN RISK. Incorrect use can cause crashes, broken mods, and world corruption. Back up your worlds. Do NOT report bugs to mod authors if you have modified their mixins with this tool.",
+  "enabled": true,
+  "blacklist": {
+    "mixins": ["carpet.mixins.StructureBlockEntity_limitsMixin"],
+    "mixinConfigs": [],
+    "targetClasses": []
+  },
+  "priorities": {
+    "mixinConfigPriorities": {},
+    "mixinPriorities": {}
+  },
+  "methodRemovals": {
+    "rules": []
+  },
+  "audit": {
+    "enabled": true,
+    "outputFile": "config/mixinhelper-report.json",
+    "includeAnnotations": true
+  },
+  "debug": {
+    "verbose": false,
+    "logBlacklistActions": true,
+    "logMethodRemovals": true
+  },
+  "guardrails": {
+    "enabled": true,
+    "bypassProtectedClasses": false,
+    "additionalProtectedPatterns": [],
+    "excludeFromProtection": []
+  }
+}

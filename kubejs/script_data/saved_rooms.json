@@ -2,9 +2,9 @@
 	"kubejs:vinnyacornertest": {
 		"room_id": "kubejs:vinnyacornertest",
 		"bounding_box": {
-			"x": 33,
+			"x": 35,
 			"y": 14,
-			"z": 31
+			"z": 33
 		},
 		"spawner_count": 10,
 		"room_data": {
@@ -17,36 +17,36 @@
 				"facing": "south",
 				"door_type": "any",
 				"pos": {
-					"x": 4,
+					"x": 5,
 					"y": 8,
-					"z": 0
+					"z": 1
 				}
 			},
 			{
 				"facing": "east",
 				"door_type": "any",
 				"pos": {
-					"x": 0,
+					"x": 1,
 					"y": 8,
-					"z": 5
+					"z": 6
 				}
 			},
 			{
 				"facing": "north",
 				"door_type": "any",
 				"pos": {
-					"x": 9,
+					"x": 10,
 					"y": 8,
-					"z": 30
+					"z": 31
 				}
 			},
 			{
 				"facing": "west",
 				"door_type": "any",
 				"pos": {
-					"x": 32,
+					"x": 33,
 					"y": 8,
-					"z": 5
+					"z": 6
 				}
 			}
 		]
@@ -54,9 +54,9 @@
 	"kubejs:vinnya36doortest": {
 		"room_id": "kubejs:vinnya36doortest",
 		"bounding_box": {
-			"x": 31,
+			"x": 33,
 			"y": 42,
-			"z": 35
+			"z": 37
 		},
 		"spawner_count": 9,
 		"room_data": {
@@ -69,98 +69,98 @@
 				"facing": "south",
 				"door_type": "any",
 				"pos": {
-					"x": 7,
+					"x": 8,
 					"y": 14,
-					"z": 0
+					"z": 1
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 1,
+					"y": 18,
+					"z": 9
 				}
 			},
 			{
 				"facing": "south",
 				"door_type": "any",
 				"pos": {
-					"x": 4,
+					"x": 5,
 					"y": 27,
-					"z": 0
+					"z": 1
 				}
 			},
 			{
 				"facing": "east",
 				"door_type": "any",
 				"pos": {
-					"x": 0,
+					"x": 1,
 					"y": 6,
-					"z": 15
+					"z": 16
 				}
 			},
 			{
 				"facing": "east",
 				"door_type": "any",
 				"pos": {
-					"x": 0,
-					"y": 18,
-					"z": 8
-				}
-			},
-			{
-				"facing": "east",
-				"door_type": "any",
-				"pos": {
-					"x": 0,
-					"y": 25,
-					"z": 13
-				}
-			},
-			{
-				"facing": "east",
-				"door_type": "any",
-				"pos": {
-					"x": 0,
-					"y": 34,
-					"z": 13
-				}
-			},
-			{
-				"facing": "east",
-				"door_type": "any",
-				"pos": {
-					"x": 0,
-					"y": 9,
-					"z": 27
-				}
-			},
-			{
-				"facing": "east",
-				"door_type": "any",
-				"pos": {
-					"x": 0,
+					"x": 1,
 					"y": 14,
-					"z": 23
+					"z": 24
 				}
 			},
 			{
 				"facing": "east",
 				"door_type": "any",
 				"pos": {
-					"x": 0,
-					"y": 22,
+					"x": 1,
+					"y": 25,
+					"z": 14
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 1,
+					"y": 31,
+					"z": 22
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 1,
+					"y": 34,
+					"z": 14
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 1,
+					"y": 9,
 					"z": 28
 				}
 			},
 			{
-				"facing": "east",
+				"facing": "north",
 				"door_type": "any",
 				"pos": {
-					"x": 0,
-					"y": 31,
-					"z": 21
+					"x": 9,
+					"y": 11,
+					"z": 35
 				}
 			},
 			{
 				"facing": "east",
 				"door_type": "any",
 				"pos": {
-					"x": 0,
-					"y": 36,
+					"x": 1,
+					"y": 22,
 					"z": 29
 				}
 			},
@@ -168,45 +168,18 @@
 				"facing": "north",
 				"door_type": "any",
 				"pos": {
-					"x": 8,
-					"y": 11,
-					"z": 34
-				}
-			},
-			{
-				"facing": "north",
-				"door_type": "any",
-				"pos": {
-					"x": 8,
+					"x": 9,
 					"y": 28,
-					"z": 34
+					"z": 35
 				}
 			},
 			{
-				"facing": "south",
+				"facing": "east",
 				"door_type": "any",
 				"pos": {
-					"x": 17,
-					"y": 7,
-					"z": 0
-				}
-			},
-			{
-				"facing": "south",
-				"door_type": "any",
-				"pos": {
-					"x": 24,
-					"y": 16,
-					"z": 0
-				}
-			},
-			{
-				"facing": "south",
-				"door_type": "any",
-				"pos": {
-					"x": 10,
-					"y": 22,
-					"z": 0
+					"x": 1,
+					"y": 36,
+					"z": 30
 				}
 			},
 			{
@@ -214,71 +187,80 @@
 				"door_type": "any",
 				"pos": {
 					"x": 18,
-					"y": 24,
-					"z": 0
+					"y": 7,
+					"z": 1
 				}
 			},
 			{
 				"facing": "south",
-				"door_type": "any",
-				"pos": {
-					"x": 23,
-					"y": 28,
-					"z": 0
-				}
-			},
-			{
-				"facing": "south",
-				"door_type": "any",
-				"pos": {
-					"x": 10,
-					"y": 31,
-					"z": 0
-				}
-			},
-			{
-				"facing": "south",
-				"door_type": "any",
-				"pos": {
-					"x": 17,
-					"y": 35,
-					"z": 0
-				}
-			},
-			{
-				"facing": "north",
 				"door_type": "any",
 				"pos": {
 					"x": 25,
+					"y": 16,
+					"z": 1
+				}
+			},
+			{
+				"facing": "south",
+				"door_type": "any",
+				"pos": {
+					"x": 11,
+					"y": 22,
+					"z": 1
+				}
+			},
+			{
+				"facing": "south",
+				"door_type": "any",
+				"pos": {
+					"x": 19,
+					"y": 24,
+					"z": 1
+				}
+			},
+			{
+				"facing": "south",
+				"door_type": "any",
+				"pos": {
+					"x": 24,
+					"y": 28,
+					"z": 1
+				}
+			},
+			{
+				"facing": "south",
+				"door_type": "any",
+				"pos": {
+					"x": 11,
+					"y": 31,
+					"z": 1
+				}
+			},
+			{
+				"facing": "south",
+				"door_type": "any",
+				"pos": {
+					"x": 18,
+					"y": 35,
+					"z": 1
+				}
+			},
+			{
+				"facing": "north",
+				"door_type": "any",
+				"pos": {
+					"x": 26,
 					"y": 3,
-					"z": 34
+					"z": 35
 				}
 			},
 			{
 				"facing": "north",
 				"door_type": "any",
 				"pos": {
-					"x": 13,
+					"x": 14,
 					"y": 8,
-					"z": 34
-				}
-			},
-			{
-				"facing": "north",
-				"door_type": "any",
-				"pos": {
-					"x": 21,
-					"y": 11,
-					"z": 34
-				}
-			},
-			{
-				"facing": "north",
-				"door_type": "any",
-				"pos": {
-					"x": 17,
-					"y": 19,
-					"z": 34
+					"z": 35
 				}
 			},
 			{
@@ -286,107 +268,125 @@
 				"door_type": "any",
 				"pos": {
 					"x": 22,
-					"y": 25,
-					"z": 34
-				}
-			},
-			{
-				"facing": "north",
-				"door_type": "any",
-				"pos": {
-					"x": 19,
-					"y": 32,
-					"z": 34
-				}
-			},
-			{
-				"facing": "north",
-				"door_type": "any",
-				"pos": {
-					"x": 24,
-					"y": 35,
-					"z": 34
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 30,
-					"y": 6,
-					"z": 11
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 30,
-					"y": 9,
-					"z": 16
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 30,
-					"y": 14,
-					"z": 6
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 30,
-					"y": 16,
-					"z": 12
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 30,
-					"y": 27,
-					"z": 12
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 30,
 					"y": 11,
-					"z": 28
+					"z": 35
 				}
 			},
 			{
-				"facing": "west",
+				"facing": "north",
 				"door_type": "any",
 				"pos": {
-					"x": 30,
-					"y": 18,
-					"z": 20
+					"x": 18,
+					"y": 19,
+					"z": 35
 				}
 			},
 			{
-				"facing": "west",
+				"facing": "north",
 				"door_type": "any",
 				"pos": {
-					"x": 30,
-					"y": 24,
-					"z": 27
+					"x": 23,
+					"y": 25,
+					"z": 35
 				}
 			},
 			{
-				"facing": "west",
+				"facing": "north",
 				"door_type": "any",
 				"pos": {
-					"x": 30,
+					"x": 20,
 					"y": 32,
-					"z": 20
+					"z": 35
+				}
+			},
+			{
+				"facing": "north",
+				"door_type": "any",
+				"pos": {
+					"x": 25,
+					"y": 35,
+					"z": 35
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 31,
+					"y": 14,
+					"z": 7
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 31,
+					"y": 6,
+					"z": 12
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 31,
+					"y": 9,
+					"z": 17
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 31,
+					"y": 16,
+					"z": 13
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 31,
+					"y": 18,
+					"z": 21
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 31,
+					"y": 27,
+					"z": 13
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 31,
+					"y": 32,
+					"z": 21
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 31,
+					"y": 11,
+					"z": 29
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 31,
+					"y": 24,
+					"z": 28
 				}
 			}
 		]
@@ -588,6 +588,157 @@
 					"x": 28,
 					"y": 8,
 					"z": 40
+				}
+			}
+		]
+	},
+	"kubejs:longhalltestfordeepa": {
+		"room_id": "kubejs:longhalltestfordeepa",
+		"bounding_box": {
+			"x": 30,
+			"y": 15,
+			"z": 49
+		},
+		"spawner_count": 12,
+		"room_data": {
+			"floor_theme": "dungeon",
+			"spawners_required": 0.9,
+			"room_type": "normal"
+		},
+		"doors": [
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 1,
+					"y": 8,
+					"z": 3
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 1,
+					"y": 8,
+					"z": 11
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 1,
+					"y": 8,
+					"z": 19
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 1,
+					"y": 8,
+					"z": 27
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 1,
+					"y": 8,
+					"z": 35
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 1,
+					"y": 8,
+					"z": 41
+				}
+			},
+			{
+				"facing": "north",
+				"door_type": "any",
+				"pos": {
+					"x": 8,
+					"y": 8,
+					"z": 48
+				}
+			},
+			{
+				"facing": "south",
+				"door_type": "any",
+				"pos": {
+					"x": 15,
+					"y": 8,
+					"z": 1
+				}
+			},
+			{
+				"facing": "north",
+				"door_type": "any",
+				"pos": {
+					"x": 22,
+					"y": 8,
+					"z": 48
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 29,
+					"y": 8,
+					"z": 3
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 29,
+					"y": 8,
+					"z": 11
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 29,
+					"y": 8,
+					"z": 19
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 29,
+					"y": 8,
+					"z": 27
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 29,
+					"y": 8,
+					"z": 35
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 29,
+					"y": 8,
+					"z": 41
 				}
 			}
 		]
