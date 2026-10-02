@@ -3,6 +3,7 @@
 
 const $AttributeModifier = Java.loadClass('net.minecraft.world.entity.ai.attributes.AttributeModifier')
 const $UUID = Java.loadClass('java.util.UUID')
+const $NbtUtils = Java.loadClass('net.minecraft.nbt.NbtUtils')
 const $EquipmentSlot = Java.loadClass('net.minecraft.world.entity.EquipmentSlot')
 const $Random = Java.loadClass("java.util.Random")
 const $Set = Java.loadClass("java.util.Set")

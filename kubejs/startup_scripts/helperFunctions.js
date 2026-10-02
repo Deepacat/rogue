@@ -42,5 +42,9 @@ function nbtToObject(tag) {
 
     return tag.toString()
 }
-
 global.nbtToObject = nbtToObject
+
+function uuidToIntArrayTag(uuidString) {
+    return $NbtUtils.createUUID($UUID.fromString(uuidString))
+}
+global.uuidToIntArrayTag = uuidToIntArrayTag
