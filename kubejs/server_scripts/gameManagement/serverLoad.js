@@ -37,7 +37,8 @@ if (Utils.server != null) fixScheduledTicks(Utils.server)
 function fixScheduledTicks(server) {
     let levels = []
     server.allLevels.forEach(level => {
-        level.server.scheduleInTicks(1, () => { levels.push(`${level.dimension.namespace}:${level.dimension.path}`) })
+        level.server.scheduleInTicks(1, () => { })
+        levels.push(`${level.dimension.namespace}:${level.dimension.path}`)
     })
-    console.log(`Scheduledtick fix ran in dimensions: ${levels.join(", ")}`)
+    console.log(`Scheduled tick fix running in dimensions: ${levels.join(", ")}`)
 }
