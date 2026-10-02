@@ -9,10 +9,10 @@ let currentRun = {
 }
 
 /** @param {Internal.Player} startingPlayer */
-function getPlayersForRun(startingPlayer) {
+function getPlayerUUIDsInArea(startingPlayer, radius) {
     let { x, y, z, level } = startingPlayer
     // Get a box around player for detecting other players to add to run
-    let tpBox = AABB.ofBlock(new BlockPos(x, y, z)).inflate(3)
+    let tpBox = AABB.ofBlock(new BlockPos(x, y, z)).inflate(radius)
     // Get players within the bounding box
     let playersInRunArray = level.getEntitiesOfClass($Player, tpBox).map(p => p.stringUuid)
     return playersInRunArray
@@ -38,7 +38,7 @@ function startRun(event, startPos) {
     // // Get players within the bounding box
     // let playersInRunArray = level.getEntitiesOfClass($Player, tpBox).map(p => p.stringUuid)
 
-    let playersInRunArray = getPlayersForRun(event.player)
+    let playersInRunArray = getPlayerUUIDsInArea(event.player, 3)
 
     // Template run object for tracking data related to the run
     let runObjTemplate = {
@@ -67,14 +67,14 @@ function startRun(event, startPos) {
     let runObj = server.persistentData["runs"][runUUID]
 
     // Add the run uuid to every player in the run
-    event.player.tell(`§bStarting run§r: ${runUUID}`)
+    event.player.tell(`§bStarting run§f: §a"§f${runUUID}§a"§r`)
 
-    event.player.tell(`Creating dimension "§b${runDimID}§r" for run with theme "§b${runObj.current_theme}§r"`)
+    event.player.tell(`§bCreating dimension §a"§f${runDimID}§a"§b for run with theme §a"§f${runObj.current_theme}§a"§r`)
     global.createDimension(`kubejs:${runObj.current_theme}`, runDimID)
     server.runCommandSilent(`execute in ${runDimID} run forceload add -1 -1 1 1`)
     server.runCommandSilent(`execute in ${runDimID} run place template kubejs:lobby_dungeon 0 256 0`)
 
-    event.player.tell(`§bPlayers in run§r: §a[§r${playersInRunArray.join(", ")}§a]§r`)
+    event.player.tell(`§bPlayers in run§r: §a[§r${playersInRunArray.map(p => server.getPlayer($UUID.fromString(p)).name.string).join(", ")}§a]§r`)
     playersInRunArray.forEach(uuid => {
         let curPlayer = server.getPlayer($UUID.fromString(uuid))
         curPlayer.persistentData["current_run"] = runUUID
@@ -91,7 +91,7 @@ function endRun(event, runUUID) {
     /** @type {Internal.OrderedCompoundTag} */
     let runObj = server.persistentData["runs"][runUUID]
 
-    if (!runObj) { console.log(`Run with UUID ${runUUID} not found.`); return 0 }
+    if (!runObj) { console.log(`§bRun with UUID: §a"§f${runUUID}§a"§b not found.§r`); return 0 }
     delete server.persistentData["runs"][runUUID]
 
     /** @type {Internal.ListTag} */
@@ -105,7 +105,7 @@ function endRun(event, runUUID) {
             server.persistentData["ended_run_players"].push(uuidString)
             return
         } else {
-            player.tell(`Run "§b${runUUID}§r" has ended.`)
+            player.tell(`§bRun §a"§f${runUUID}§a"§b has ended.§r`)
             player.persistentData["current_run"] = null
         }
     })
@@ -146,14 +146,14 @@ ServerEvents.commandRegistry(e => {
                 .executes(ctx => {
                     const { server, player, level } = ctx.source
                     let runUUID = player.persistentData["current_run"]
-                    player.tell(`§bEnding run§r: ${runUUID}`)
+                    player.tell(`§bEnding run§r: §a"§f${runUUID}§a"§r`)
                     return endRun(ctx.source, runUUID)
                 })
             )
             .then(Commands.literal("endAllRuns")
                 .executes(ctx => {
                     const { server, player, level } = ctx.source
-                    player.tell(`Ending all runs and clearing run data.`)
+                    player.tell(`§bEnding all runs and clearing run data.§r`)
                     for (let runUUID of Object.keys(server.persistentData["runs"])) {
                         endRun(ctx.source, runUUID)
                     }
