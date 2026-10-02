@@ -5,10 +5,10 @@ function killNear(ctx, obj) {
 	const { server, player, level } = ctx.source
 	let amount = obj.amount || 1
 	let entity = obj.entity || null
-	let c = server.runCommand(`execute as ${player.name.string} run kill @e[type=${entity || "!minecraft:player"},sort=nearest,limit=${amount}]`)
+	let returnCode = server.runCommand(`execute as ${player.name.string} run kill @e[type=${entity || "!minecraft:player"},sort=nearest,limit=${amount}]`)
 
 	if (returnCode === 0) { ctx.source.player.tell(`No entity found`) }
-	return c
+	return returnCode
 }
 
 /**
