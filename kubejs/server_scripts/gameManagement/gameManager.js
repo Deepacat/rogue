@@ -8,13 +8,16 @@ let currentRun = {
     "room_count": 0
 }
 
-/** @param {Internal.Player} startingPlayer */
-function getPlayerUUIDsInArea(startingPlayer, radius) {
-    let { x, y, z, level } = startingPlayer
+/** 
+ * @param {Internal.Level} level
+ * @param {Internal.BlockPos} blockPos 
+ * @param {number} radius
+ */
+function getPlayerUUIDsInArea(level, blockPos, radius) {
     // Get a box around player for detecting other players to add to run
-    let tpBox = AABB.ofBlock(new BlockPos(x, y, z)).inflate(radius)
+    let boundingBox = AABB.ofBlock(blockPos).inflate(radius)
     // Get players within the bounding box
-    let playersInRunArray = level.getEntitiesOfClass($Player, tpBox).map(p => p.stringUuid)
+    let playersInRunArray = level.getEntitiesOfClass($Player, boundingBox).map(p => p.stringUuid)
     return playersInRunArray
 }
 
@@ -22,7 +25,7 @@ function getPlayerUUIDsInArea(startingPlayer, radius) {
  * @param {Internal.CommandSourceStack} event 
  * @param {Internal.Vec3d} startPos 
  * @returns {number} */
-function startRun(event, startPos) {
+function startRun(event, startingPlayerUUIDArray) {
     const { server, level } = event
 
     // Run can only be started from the lobby dimension (shouldn't happy outside of it realistically)
@@ -32,13 +35,7 @@ function startRun(event, startPos) {
     let runUUID = $UUID.randomUUID().toString()
     let runDimID = `rogue:${runUUID}`
 
-    // // Get a box around player for detecting other players to add to run
-    // let tpBox = AABB.ofBlock(new BlockPos(startPos.x, startPos.y, startPos.z)).inflate(3)
-
-    // // Get players within the bounding box
-    // let playersInRunArray = level.getEntitiesOfClass($Player, tpBox).map(p => p.stringUuid)
-
-    let playersInRunArray = getPlayerUUIDsInArea(event.player, 3)
+    let playersInRunArray = startingPlayerUUIDArray
 
     // Template run object for tracking data related to the run
     let runObjTemplate = {
@@ -99,7 +96,6 @@ function endRun(event, runUUID) {
 
     alive_players.forEach(uuid => {
         let uuidString = uuid.getAsString()
-        // TODO: Make this somehow effect offline players (if null, add to a list to clear on login?)
         let player = server.getPlayer($UUID.fromString(uuidString)) || null
         if (!player) {
             server.persistentData["ended_run_players"].push(uuidString)
@@ -121,14 +117,17 @@ ServerEvents.commandRegistry(e => {
         .then(Commands.literal("runs")
             .then(Commands.literal("startRun")
                 .executes(ctx => {
-                    return startRun(ctx.source, new BlockPos(ctx.source.player.x, ctx.source.player.y, ctx.source.player.z))
+                    let player = ctx.source.getPlayer()
+                    if (!player) { return 0 }
+                    let runPlayers = getPlayerUUIDsInArea(player.level, player.block.pos, 3)
+                    return startRun(ctx.source, runPlayers)
                 })
             )
             .then(Commands.literal("getOngoingRuns")
                 .executes(ctx => {
                     const { server, player, level } = ctx.source
-                    player.tell(`"Ongoing runs": [${Object.keys(server.persistentData["runs"]).join(", ") || "None"}]`)
-                    player.tell(`Outputting runs data to console.`)
+                    player.tell(`§bOngoing runs: §a[§f${Object.keys(server.persistentData["runs"]).join(", ") || "None"}§a]§r`)
+                    player.tell(`§bOutputting runs data to console.§r`)
                     console.log(`"Ongoing runs":`, server.persistentData["runs"])
                     return 1
                 })
@@ -137,7 +136,7 @@ ServerEvents.commandRegistry(e => {
                 .executes(ctx => {
                     const { server, player, level } = ctx.source
                     let runUUID = player.persistentData["current_run"]
-                    player.tell(`§bOutput run data to console for run UUID§r: "${player.persistentData["current_run"]}"`)
+                    player.tell(`§bOutput run data to console for run UUID: §a"§f${player.persistentData["current_run"]}§a"§r`)
                     console.log(`"Run data for UUID": ${runUUID}`, server.persistentData["runs"][runUUID])
                     return 1
                 })

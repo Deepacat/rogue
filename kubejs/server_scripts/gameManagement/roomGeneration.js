@@ -102,7 +102,8 @@ function genRoomTest(pos, genDirection, runData, e) {
 
     let roomPlaceCommand = `execute in ${level.dimension} run place template ${randomRoom} ${originX} ${originY} ${originZ} ${rotationCommand}`
     console.log(`Placing room with command: ${roomPlaceCommand}`)
-    console.log(server.runCommandSilent(roomPlaceCommand))
+    let roomPlaceReturn = server.runCommandSilent(roomPlaceCommand)
+    console.log(roomPlaceReturn)
 
     /* Doorway removal, 3 wide, 4 tall, 4 deep (2 blocks of bedrock between rooms) */
     let perp = genDirection.clockWise
@@ -134,10 +135,11 @@ function genRoomTest(pos, genDirection, runData, e) {
     let maxY = pos.y + 2
 
     // Fill doorway after delay (Makes sure it's after the room is placed)
-    server.scheduleInTicks(2, () => {
+    server.scheduleInTicks(1, () => {
         let doorFillCommand = `execute in ${level.dimension} run fill ${minX} ${minY} ${minZ} ${maxX} ${maxY} ${maxZ} minecraft:air`
         console.log(`Filling doorway with command: ${doorFillCommand}`)
-        console.log(server.runCommandSilent(doorFillCommand))
+        let doorFillReturn = server.runCommandSilent(doorFillCommand)
+        console.log(doorFillReturn)
     })
 
     /* Get bounding box of generated room (including 2 blocks of bedrock gap from door) */

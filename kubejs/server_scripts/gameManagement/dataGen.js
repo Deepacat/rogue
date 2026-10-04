@@ -3,7 +3,7 @@
 /* Script for generating/dumping data related to game management systems */
 
 // Create floor data from saved room data for easier room picking
-let savedRooms = JsonIO.read('kubejs/script_data/saved_rooms.json')
+let savedRooms = JsonIO.read('kubejs/script_data/saved_rooms.json') || {}
 let floorData = {}
 // const floorThemes = ["dungeon"/* , "magic", "lush" */]
 let floorThemes = []

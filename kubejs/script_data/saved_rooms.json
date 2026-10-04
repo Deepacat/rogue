@@ -1,4 +1,56 @@
 {
+	"kubejs:lobby_dungeon": {
+		"room_id": "kubejs:lobby_dungeon",
+		"bounding_box": {
+			"x": 29,
+			"y": 28,
+			"z": 29
+		},
+		"spawner_count": 0,
+		"room_data": {
+			"floor_theme": "dungeon",
+			"spawners_required": 0.9,
+			"room_type": "lobby"
+		},
+		"doors": [
+			{
+				"facing": "south",
+				"door_type": "any",
+				"pos": {
+					"x": 14,
+					"y": 6,
+					"z": 1
+				}
+			},
+			{
+				"facing": "east",
+				"door_type": "any",
+				"pos": {
+					"x": 1,
+					"y": 6,
+					"z": 15
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "any",
+				"pos": {
+					"x": 28,
+					"y": 6,
+					"z": 14
+				}
+			},
+			{
+				"facing": "north",
+				"door_type": "any",
+				"pos": {
+					"x": 15,
+					"y": 6,
+					"z": 28
+				}
+			}
+		]
+	},
 	"kubejs:vinnyacornertest": {
 		"room_id": "kubejs:vinnyacornertest",
 		"bounding_box": {
@@ -391,209 +443,8 @@
 			}
 		]
 	},
-	"kubejs:lobby_dungeon": {
-		"room_id": "kubejs:lobby_dungeon",
-		"bounding_box": {
-			"x": 28,
-			"y": 28,
-			"z": 28
-		},
-		"room_data": {
-			"floor_theme": "dungeon",
-			"spawners_required": 0.9,
-			"room_type": "lobby"
-		},
-		"doors": [
-			{
-				"facing": "south",
-				"door_type": "any",
-				"pos": {
-					"x": 13,
-					"y": 6,
-					"z": 0
-				}
-			},
-			{
-				"facing": "east",
-				"door_type": "any",
-				"pos": {
-					"x": 0,
-					"y": 6,
-					"z": 14
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 27,
-					"y": 6,
-					"z": 13
-				}
-			},
-			{
-				"facing": "north",
-				"door_type": "any",
-				"pos": {
-					"x": 14,
-					"y": 6,
-					"z": 27
-				}
-			}
-		]
-	},
 	"kubejs:vinnyalonghalltest": {
 		"room_id": "kubejs:vinnyalonghalltest",
-		"bounding_box": {
-			"x": 29,
-			"y": 15,
-			"z": 48
-		},
-		"room_data": {
-			"spawners_required": 0.9,
-			"floor_theme": "dungeon",
-			"room_type": "normal"
-		},
-		"doors": [
-			{
-				"facing": "east",
-				"door_type": "any",
-				"pos": {
-					"x": 0,
-					"y": 8,
-					"z": 2
-				}
-			},
-			{
-				"facing": "east",
-				"door_type": "any",
-				"pos": {
-					"x": 0,
-					"y": 8,
-					"z": 10
-				}
-			},
-			{
-				"facing": "east",
-				"door_type": "any",
-				"pos": {
-					"x": 0,
-					"y": 8,
-					"z": 18
-				}
-			},
-			{
-				"facing": "east",
-				"door_type": "any",
-				"pos": {
-					"x": 0,
-					"y": 8,
-					"z": 26
-				}
-			},
-			{
-				"facing": "east",
-				"door_type": "any",
-				"pos": {
-					"x": 0,
-					"y": 8,
-					"z": 34
-				}
-			},
-			{
-				"facing": "east",
-				"door_type": "any",
-				"pos": {
-					"x": 0,
-					"y": 8,
-					"z": 40
-				}
-			},
-			{
-				"facing": "north",
-				"door_type": "any",
-				"pos": {
-					"x": 7,
-					"y": 8,
-					"z": 47
-				}
-			},
-			{
-				"facing": "south",
-				"door_type": "any",
-				"pos": {
-					"x": 14,
-					"y": 8,
-					"z": 0
-				}
-			},
-			{
-				"facing": "north",
-				"door_type": "any",
-				"pos": {
-					"x": 21,
-					"y": 8,
-					"z": 47
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 28,
-					"y": 8,
-					"z": 2
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 28,
-					"y": 8,
-					"z": 10
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 28,
-					"y": 8,
-					"z": 18
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 28,
-					"y": 8,
-					"z": 26
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 28,
-					"y": 8,
-					"z": 34
-				}
-			},
-			{
-				"facing": "west",
-				"door_type": "any",
-				"pos": {
-					"x": 28,
-					"y": 8,
-					"z": 40
-				}
-			}
-		]
-	},
-	"kubejs:longhalltestfordeepa": {
-		"room_id": "kubejs:longhalltestfordeepa",
 		"bounding_box": {
 			"x": 30,
 			"y": 15,

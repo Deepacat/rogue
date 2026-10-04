@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-02T03:25:29.283778700Z",
-  "totalMixinConfigs": 221,
-  "totalMixins": 3382,
+  "generatedAt": "2026-10-04T19:11:18.838025400Z",
+  "totalMixinConfigs": 220,
+  "totalMixins": 3377,
   "blacklistedCount": 1,
   "mixinConfigs": [
     {
@@ -8200,53 +8200,6 @@
           "className": "net.darkhax.attributefix.mixin.AccessorRangedAttribute",
           "annotations": [
             "@Accessor"
-          ],
-          "side": "common",
-          "blacklisted": false
-        }
-      ]
-    },
-    {
-      "name": "limitless_chat.mixins.json",
-      "packageName": "com.limitlesschat.mixin",
-      "priority": 1000,
-      "mixins": [
-        {
-          "className": "com.limitlesschat.mixin.ChatScreenMixin",
-          "annotations": [
-            "@Inject"
-          ],
-          "side": "common",
-          "blacklisted": false
-        },
-        {
-          "className": "com.limitlesschat.mixin.EditBoxMixin",
-          "annotations": [
-            "@Inject"
-          ],
-          "side": "common",
-          "blacklisted": false
-        },
-        {
-          "className": "com.limitlesschat.mixin.EditBoxAccessor",
-          "annotations": [
-            "@Accessor"
-          ],
-          "side": "common",
-          "blacklisted": false
-        },
-        {
-          "className": "com.limitlesschat.mixin.ChatComponentMixin",
-          "annotations": [
-            "@ModifyVariable"
-          ],
-          "side": "common",
-          "blacklisted": false
-        },
-        {
-          "className": "com.limitlesschat.mixin.ScreenMixin",
-          "annotations": [
-            "@Inject"
           ],
           "side": "common",
           "blacklisted": false

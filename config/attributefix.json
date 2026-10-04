@@ -638,6 +638,17 @@
         "value": 1024
       }
     },
+    "bcattributes:two_handed_damage_multiplier": {
+      "enabled": false,
+      "min": {
+        "default": 0,
+        "value": 0
+      },
+      "max": {
+        "default": 1024,
+        "value": 1024
+      }
+    },
     "attributeslib:overheal": {
       "enabled": false,
       "min": {

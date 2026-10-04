@@ -37,8 +37,12 @@ function createDimension(dimensionCopyID, newGeneratedDimID) {
 global.createDimension = createDimension
 
 function deleteDimension(dimensionID) {
+    console.log(`Attempting to delete dimension: ${dimensionID}`)
     Utils.server.runCommandSilent(`execute in ${dimensionID} run forceload remove all`)
-    $InfiniverseAPI.get().markDimensionForUnregistration(Utils.server, $ResourceKey.create($Registries.DIMENSION, dimensionID))
+    Utils.server.scheduleInTicks(1, () => {
+        console.log(`Deleting dimension: ${dimensionID}`)
+        $InfiniverseAPI.get().markDimensionForUnregistration(Utils.server, $ResourceKey.create($Registries.DIMENSION, dimensionID))
+    })
     return 1
 }
 global.deleteDimension = deleteDimension
