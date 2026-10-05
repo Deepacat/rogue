@@ -67,7 +67,7 @@ function startRun(event, startingPlayerUUIDArray) {
     event.player.tell(`§bStarting run§f: §a"§f${runUUID}§a"§r`)
 
     event.player.tell(`§bCreating dimension §a"§f${runDimID}§a"§b for run with theme §a"§f${runObj.current_theme}§a"§r`)
-    global.createDimension(`kubejs:${runObj.current_theme}`, runDimID)
+    global.dims.createDimension(`kubejs:${runObj.current_theme}`, runDimID)
     server.runCommandSilent(`execute in ${runDimID} run forceload add -1 -1 1 1`)
     server.runCommandSilent(`execute in ${runDimID} run place template kubejs:lobby_dungeon 0 256 0`)
 
@@ -106,7 +106,7 @@ function endRun(event, runUUID) {
         }
     })
     let runDimID = `rogue:${runUUID}`
-    return global.deleteDimension(runDimID)
+    return global.dims.deleteDimension(runDimID)
 }
 
 // Run debug commands

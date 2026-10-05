@@ -43,7 +43,7 @@ function editBlockData(ctx, Commands, Arguments, obj) {
 
 	nbtCopy.merge({ data: jsonObj })
 
-	let nbtArray = Object.entries(global.nbtToObject(nbtCopy))
+	let nbtArray = Object.entries(global.nbt.nbtToObject(nbtCopy))
 	for (let [key, val] of nbtArray) {
 		console.log(`${key}: ${val}`)
 	}
@@ -57,7 +57,7 @@ function editBlockData(ctx, Commands, Arguments, obj) {
  * @param {Internal.ArgumentTypeWrappers} Arguments 
  */
 function deleteDimension(ctx, Commands, Arguments) {
-	return global.deleteDimension(Arguments.GREEDY_STRING.getResult(ctx, "dimensionID"))
+	return global.dims.deleteDimension(Arguments.GREEDY_STRING.getResult(ctx, "dimensionID"))
 }
 
 ServerEvents.commandRegistry(e => {
@@ -149,7 +149,7 @@ ServerEvents.commandRegistry(e => {
 					.executes(ctx => {
 						let dimID = `rogue:${Arguments.STRING.getResult(ctx, "newGeneratedDimID")}_${$UUID.randomUUID().toString()}`
 						console.log(`Creating dimension: ${dimID}`)
-						global.createDimension(Arguments.STRING.getResult(ctx, "dimensionCopyID"), dimID)
+						global.dims.createDimension(Arguments.STRING.getResult(ctx, "dimensionCopyID"), dimID)
 						console.log(`Created dimension: ${dimID}`)
 						return 1
 					})
@@ -165,7 +165,7 @@ ServerEvents.commandRegistry(e => {
 				.executes(ctx => {
 					let dimID = Arguments.GREEDY_STRING.getResult(ctx, "dimensionID")
 					console.log(`Deleting dimension: ${dimID}`)
-					return global.deleteDimension(dimID)
+					return global.dims.deleteDimension(dimID)
 				})
 			)
 		)

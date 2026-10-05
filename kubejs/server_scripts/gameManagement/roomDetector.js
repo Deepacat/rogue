@@ -52,7 +52,7 @@ function detectRooms(ctx, Commands, Arguments, radiusOverride) {
 							break
 						}
 						case "kubejs:room_data": {
-							let roomData = global.nbtToObject(block.entityData?.data)
+							let roomData = global.nbt.nbtToObject(block.entityData?.data)
 							// console.log(`Adding block: ${JSON.stringify({ type: blockID, data: roomData, pos: [x, y, z] })}`)
 							foundBlocks.push({ type: blockID, data: roomData, pos: [x, y, z] })
 							break

@@ -1,5 +1,6 @@
+global.attributes = {}
 // Registry: each entry has a condition test and a handler function
-global.attributeHandlerRegistry = []
+global.attributes.attributeHandlerRegistry = []
 
 /**
  * Convert a condition (string or object) into a predicate function.
@@ -60,10 +61,10 @@ function buildConditionTest(condition) {
  *        Example: { tag: 'forge:tools', slot: ['head', 'chest'] }
  * @param {function(Internal.ItemAttributeModifierEvent):void} handler 
  */
-global.onItemAttributeModifier = (condition, handler) => {
+global.attributes.onItemAttributeModifier = (condition, handler) => {
     let testFunction = buildConditionTest(condition)
 
-    global.attributeHandlerRegistry.push({
+    global.attributes.attributeHandlerRegistry.push({
         test: (itemStack, slotType) => testFunction(itemStack, slotType),
         handler: handler
     })
@@ -73,7 +74,7 @@ global.onItemAttributeModifier = (condition, handler) => {
 ForgeEvents.onEvent('net.minecraftforge.event.ItemAttributeModifierEvent', e => {
     let itemStack = e.itemStack
     let slotType = e.slotType
-    for (let entry of global.attributeHandlerRegistry) {
+    for (let entry of global.attributes.attributeHandlerRegistry) {
         if (entry.test(itemStack, slotType)) {
             entry.handler(e)
         }
@@ -81,7 +82,7 @@ ForgeEvents.onEvent('net.minecraftforge.event.ItemAttributeModifierEvent', e => 
 })
 
 /*** @param {string|object} condition @param {function(Internal.ItemAttributeModifierEvent):void} handler */
-let attrMod = (condition, handler) => global.onItemAttributeModifier(condition, handler)
+let attrMod = (condition, handler) => global.attributes.onItemAttributeModifier(condition, handler)
 
 // attrMod({ item: 'minecraft:bow' }, (e) => {
 //     // e.removeModifier('projectile_damage:generic',

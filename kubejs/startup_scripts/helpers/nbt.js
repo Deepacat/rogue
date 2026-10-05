@@ -1,3 +1,4 @@
+global.nbt = {}
 /**
  * Converts java compoungTag into a JS Object for use getting data from persistentData
  * ai generated deepa is liable kill me
@@ -42,9 +43,9 @@ function nbtToObject(tag) {
 
     return tag.toString()
 }
-global.nbtToObject = nbtToObject
+global.nbt.nbtToObject = nbtToObject
 
 function uuidToIntArrayTag(uuidString) {
     return $NbtUtils.createUUID($UUID.fromString(uuidString))
 }
-global.uuidToIntArrayTag = uuidToIntArrayTag
+global.nbt.uuidToIntArrayTag = uuidToIntArrayTag

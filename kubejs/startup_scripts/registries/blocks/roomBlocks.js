@@ -1,3 +1,5 @@
+global.roomblocks = {}
+
 StartupEvents.registry('block', e => {
     e.create('kubejs:door_data', 'cardinal')
         .rotateState(ctx => ctx.set(BlockProperties.HORIZONTAL_FACING, ctx.rotate(ctx.get(BlockProperties.HORIZONTAL_FACING))))
@@ -11,7 +13,7 @@ StartupEvents.registry('block', e => {
                 door_type: "any" // can be "any", "entrance", or "exit" to mark how the door connects rooms
             })
         })
-        .rightClick(ctx => { global.doorDataBlockClicked(ctx) }) // add right click listener
+        .rightClick(ctx => { global.roomblocks.doorDataBlockClicked(ctx) }) // add right click listener
         .item(i => {
             i.modelJson = { "parent": "minecraft:item/generated", "textures": { "layer0": "kubejs:block/door_data_front" } }
             i.tooltip(Text.of(["§7Place within room bounds to mark doorways. Direction Matters!\n", "§7Can right-click to test room detection."]))
@@ -26,7 +28,7 @@ StartupEvents.registry('block', e => {
                 room: undefined // initial empty room data, if this doesn't exist it won't be saved to the world
             })
         })
-        .rightClick(ctx => { global.roomCornerBlockClicked(ctx) }) // add right click listener
+        .rightClick(ctx => { global.roomblocks.roomCornerBlockClicked(ctx) }) // add right click listener
         .item(i => {
             i.modelJson = { "parent": "minecraft:item/generated", "textures": { "layer0": "kubejs:block/room_corner" } }
             i.texture("kubejs:block/room_corner")
@@ -47,7 +49,7 @@ StartupEvents.registry('block', e => {
                 floor_theme: "dungeon" // the floor theme of the room so that it only generates on that floor theme
             })
         })
-        .rightClick(ctx => { global.roomDataBlockClicked(ctx) })
+        .rightClick(ctx => { global.roomblocks.roomDataBlockClicked(ctx) })
         .item(i => {
             i.modelJson = { "parent": "minecraft:item/generated", "textures": { "layer0": "kubejs:block/room_data" } }
             i.texture("kubejs:block/room_data")
@@ -90,6 +92,6 @@ const roomDataBlockClicked = (ctx) => {
 }
 
 // Export functions to global scope so they're reloadable
-global.roomCornerBlockClicked = roomCornerBlockClicked
-global.doorDataBlockClicked = doorDataBlockClicked
-global.roomDataBlockClicked = roomDataBlockClicked
+global.roomblocks.roomCornerBlockClicked = roomCornerBlockClicked
+global.roomblocks.doorDataBlockClicked = doorDataBlockClicked
+global.roomblocks.roomDataBlockClicked = roomDataBlockClicked

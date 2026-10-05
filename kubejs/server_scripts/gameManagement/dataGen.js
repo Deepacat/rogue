@@ -32,13 +32,13 @@ ServerEvents.loaded(e => {
     if (e.server.persistentData["ended_run_players"] == undefined) { e.server.persistentData["ended_run_players"] = [] }
     if (e.server.persistentData["runs"] == undefined) { e.server.persistentData["runs"] = {} }
     // Write server data to file for reading to debug
-    let serverDataObj = global.nbtToObject(e.server.persistentData)
+    let serverDataObj = global.nbt.nbtToObject(e.server.persistentData)
     JsonIO.write('kubejs/script_data/debug/persistent_data_dump.json', serverDataObj)
 })
 
 // Rerun every minute to update dumped data
 ServerEvents.tick(e => {
     if (e.server.tickCount % (20) != 0) return
-    let serverDataObj = global.nbtToObject(e.server.persistentData)
+    let serverDataObj = global.nbt.nbtToObject(e.server.persistentData)
     JsonIO.write('kubejs/script_data/debug/persistent_data_dump.json', serverDataObj)
 })

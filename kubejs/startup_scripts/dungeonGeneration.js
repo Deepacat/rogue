@@ -1,5 +1,7 @@
 // priority: 100
 
+global.dims = {}
+
 // World generation code mostly taken from Gcats Gambleth modpack
 
 /**
@@ -34,7 +36,7 @@ function createDimension(dimensionCopyID, newGeneratedDimID) {
 
     return newDim
 }
-global.createDimension = createDimension
+global.dims.createDimension = createDimension
 
 function deleteDimension(dimensionID) {
     console.log(`Attempting to delete dimension: ${dimensionID}`)
@@ -42,7 +44,10 @@ function deleteDimension(dimensionID) {
     Utils.server.scheduleInTicks(1, () => {
         console.log(`Deleting dimension: ${dimensionID}`)
         $InfiniverseAPI.get().markDimensionForUnregistration(Utils.server, $ResourceKey.create($Registries.DIMENSION, dimensionID))
+        if (Utils.server.getLevel(dimensionID) != null) {
+            console.log(`Failed to delete dimension: ${dimensionID}`)
+        }
     })
     return 1
 }
-global.deleteDimension = deleteDimension
+global.dims.deleteDimension = deleteDimension
