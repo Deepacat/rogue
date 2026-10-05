@@ -17,8 +17,10 @@ function _resolvePlayers(targets) {
     for (let t of arr) {
         if (t === null || t === undefined) continue
 
-        // Already a ServerPlayer
-        if (typeof t === 'object' && typeof t.getConnection === 'function') {
+        // ServerPlayer: `.connection` is a public field (Mojang mappings).
+        // Yarn calls it `networkHandler`; keep both checks so the helper
+        // survives a mapping swap or a wrapper object.
+        if (typeof t === 'object' && (t.connection != null || t.networkHandler != null)) {
             out.push(t)
             continue
         }
@@ -96,8 +98,7 @@ function sendTitle(targets, options) {
 
 global.titles.sendTitle = sendTitle
 
-// /* Examples
-
+/* Examples */
 // ItemEvents.rightClicked('minecraft:dirt', event => {
 //     sendTitle(event.player, {
 //         title:    '§6Hello!',
@@ -117,4 +118,22 @@ global.titles.sendTitle = sendTitle
 
 // // Clear and reset timings back to vanilla defaults
 // sendTitle(event.player, { clear: true, reset: true })
-// */
+
+
+/* sending title packet normally reference */
+// /** @type {Internal.ServerPlayer} */
+// const player = event.player
+// if (!player) return
+
+// const $ClientboundSetTitleTextPacket = Java.loadClass('net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket')
+// const $ClientboundSetSubtitleTextPacket = Java.loadClass('net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket')
+// const $ClientboundSetTitlesAnimationPacket = Java.loadClass('net.minecraft.network.protocol.game.ClientboundSetTitlesAnimationPacket')
+
+// const title = Component.literal('§6Hello!')
+// const subtitle = Component.literal('§7From a KubeJS script')
+
+// // fadeIn, stay, fadeOut are in ticks (20 = 1 sec)
+// // Need to 
+// player.connection.send(new $ClientboundSetTitlesAnimationPacket(10, 60, 20))
+// player.connection.send(new $ClientboundSetSubtitleTextPacket(subtitle))
+// player.connection.send(new $ClientboundSetTitleTextPacket(title)) 

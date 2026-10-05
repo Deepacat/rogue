@@ -1,6 +1,28 @@
 {
 	"server_first_load": 0,
-	"runs": {},
+	"runs": {
+		"637d6428-c287-40ba-b9f2-3436ce8fff56": {
+			"dimension": "rogue:637d6428-c287-40ba-b9f2-3436ce8fff56",
+			"current_theme": "dungeon",
+			"room_count": 0,
+			"floor_number": 1,
+			"generated_boxes": [],
+			"exhausted_rooms": [],
+			"starting_players": [
+				"09322a8a-c19a-4797-845f-c216ffd2e83d",
+				"15d2f1b4-dd16-405e-a4d4-a89ecbeeb593"
+			],
+			"alive_players": [
+				"09322a8a-c19a-4797-845f-c216ffd2e83d",
+				"15d2f1b4-dd16-405e-a4d4-a89ecbeeb593"
+			],
+			"dead_players": [],
+			"current_room": {
+				"room_data": {},
+				"spawners_mined": 0
+			}
+		}
+	},
 	"ended_run_players": [
 		"277ad060-fa15-4e53-926b-e0cf18a7a744"
 	],
