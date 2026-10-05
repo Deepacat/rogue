@@ -26,15 +26,14 @@ function getPlayerUUIDsInArea(level, blockPos, radius) {
  * @param {Internal.Vec3d} startPos 
  * @returns {number} */
 function startRun(event, startingPlayerUUIDArray) {
-    const { server, level } = event
+    const { server, player, level } = event
 
     // Run can only be started from the lobby dimension (shouldn't happy outside of it realistically)
-    if (level.dimension != "kubejs:lobby") { console.log("Run failed to start, player not in lobby dimension."); return 0 }
+    if (level.dimension != "kubejs:lobby") { player.tell("§bYou must be in the lobby to start a run"); return 0 }
 
     // Generate a run uuid for tracking and dimension
     let runUUID = $UUID.randomUUID().toString()
     let runDimID = `rogue:${runUUID}`
-
     let playersInRunArray = startingPlayerUUIDArray
 
     // Template run object for tracking data related to the run
@@ -64,18 +63,19 @@ function startRun(event, startingPlayerUUIDArray) {
     let runObj = server.persistentData["runs"][runUUID]
 
     // Add the run uuid to every player in the run
-    event.player.tell(`§bStarting run§f: §a"§f${runUUID}§a"§r`)
+    player.tell(`§bStarting run§f: §a"§f${runUUID}§a"§r`)
 
-    event.player.tell(`§bCreating dimension §a"§f${runDimID}§a"§b for run with theme §a"§f${runObj.current_theme}§a"§r`)
+    player.tell(`§bCreating dimension §a"§f${runDimID}§a"§b for run with theme §a"§f${runObj.current_theme}§a"§r`)
     global.dims.createDimension(`kubejs:${runObj.current_theme}`, runDimID)
     server.runCommandSilent(`execute in ${runDimID} run forceload add -1 -1 1 1`)
     server.runCommandSilent(`execute in ${runDimID} run place template kubejs:lobby_dungeon 0 256 0`)
 
-    event.player.tell(`§bPlayers in run§r: §a[§r${playersInRunArray.map(p => server.getPlayer($UUID.fromString(p)).name.string).join(", ")}§a]§r`)
+    player.tell(`§bPlayers in run§r: §a[§r${playersInRunArray.map(p => server.getPlayer($UUID.fromString(p)).name.string).join(", ")}§a]§r`)
     playersInRunArray.forEach(uuid => {
-        let curPlayer = server.getPlayer($UUID.fromString(uuid))
-        curPlayer.persistentData["current_run"] = runUUID
-        server.runCommandSilent(`execute in ${runDimID} run tp ${curPlayer.name.string} 14.0 270 14.0 180 0`)
+        let runPlayer = server.getPlayer($UUID.fromString(uuid))
+        runPlayer.persistentData["current_run"] = runUUID
+        server.runCommandSilent(`execute in ${runDimID} run tp ${runPlayer.name.string} 14.0 270 14.0 180 0`)
+        global.titles.sendTitle(runPlayer, { clear: true, reset: true })
     })
     return 1
 }
