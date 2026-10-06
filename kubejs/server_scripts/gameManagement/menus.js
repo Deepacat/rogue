@@ -2,61 +2,66 @@
  * @param {Internal.ItemClickedEventJS} event 
  * @param {Internal.ServerPlayer} player 
  */
-let runCreationUI = (event, player) => {
+function runCreationUI(event, player) {
     player.openChestGUI(Text.of(Text.red('Run Start Interface')), 3, gui => {
         gui.playerSlots = false
-        let runPlayers = getPlayerUUIDsInArea(event.level, event.player.block.pos, 3)
-        let removedPlayers = []
+        let runPlayerUUIDs = getPlayerUUIDsInArea(event.level, event.player.block.pos, 3)
+        let removedPlayerUUIDs = [] // temp var for removed player list
 
-        let newUI = (runPlayers, removedPlayers) => {
+        function newUI(runPlayerUUIDs, removedPlayerUUIDs) {
+            // Run start checkbox button
             gui.slot(4, 2, slot => {
                 slot.item = Item.of(heads.checkmark)
                     .withNBT({ display: { Name: `{"text":"§aStart run"}` } })
                 slot.leftClicked = (ctx) => {
+                    let finalRunPlayerUUIDs = runPlayerUUIDs.filter(p => !removedPlayerUUIDs.includes(p))
                     event.player.closeMenu()
-                    global.titles.sendTitle(runPlayers.filter(p => !removedPlayers.includes(p)), {
+                    global.titles.sendTitle(finalRunPlayerUUIDs, {
                         title: '§fStarting run',
                         subtitle: '§bPlease wait a moment...',
                         times: { fadeIn: 5, stay: 100, fadeOut: 10 }
                     })
                     event.server.scheduleInTicks(1, () => {
-                        startRun(event, runPlayers.filter(p => !removedPlayers.includes(p)))
+                        startRun(event, finalRunPlayerUUIDs)
                     })
                 }
             })
 
-            for (let i = 0; i < runPlayers.length; i++) {
-                /** @type {Internal.Player} */
-                let runPlayer = event.server.getPlayer($UUID.fromString(runPlayers[i]))
-                let playerRemoved = removedPlayers.includes(runPlayer.uuid.toString())
-                let joinOrNotMsg = playerRemoved ? "§cwill not§f" : "§awill§f"
+            // Loop over players and add a slot with their head for removals
+            /** @type {Array<string>} */
+            let playersExceptSelf = runPlayerUUIDs.filter(p => p != player.uuid)
 
-                gui.slot(i, 0, slot => {
-                    slot.item = Item.of('minecraft:player_head')
+            console.log(`Slots (${playersExceptSelf.length} players):`)
+
+            for (let playerUUID of playersExceptSelf) {
+                /** @type {Internal.Player} */
+                let runPlayer = event.server.getPlayer($UUID.fromString(playerUUID))
+
+                let isPlayerRemoved = removedPlayerUUIDs.includes(runPlayer.uuid.toString())
+                let joinOrNotMsg = isPlayerRemoved ? "§cwill not§f" : "§awill§f"
+
+                let coll = (playersExceptSelf.indexOf(playerUUID)) % 9
+                let row = Math.floor(playersExceptSelf.indexOf(playerUUID) / 9)
+                gui.slot(coll, row, slot => {
+                    slot.item = Item.of('minecraft:player_head') // Players head
                         .withNBT({ SkullOwner: `${runPlayer.name.string}`, display: { Name: `{"text":"§b${runPlayer.name.string}§f ${joinOrNotMsg} join your run."}` } })
                     slot.leftClicked = (ctx) => {
-                        if (removedPlayers.includes(runPlayer.uuid.toString())) {
+                        if (removedPlayerUUIDs.includes(runPlayer.uuid.toString())) {
                             // Add removed player back to run
-                            removedPlayers = removedPlayers.filter(p => p != runPlayer.uuid.toString())
+                            removedPlayerUUIDs = removedPlayerUUIDs.filter(p => p != runPlayer.uuid.toString())
                         } else {
                             // Remove player from run
-                            if (runPlayer.uuid.toString() == player.uuid.toString()) {
-                                player.tell(`§cYou cannot remove yourself from the run.`)
-                                return
-                            }
-                            removedPlayers.push(runPlayer.uuid.toString())
+                            removedPlayerUUIDs.push(runPlayer.uuid.toString())
                         }
-                        newUI(runPlayers, removedPlayers)
+                        // Reopen UI with updated player list
+                        newUI(runPlayerUUIDs, removedPlayerUUIDs)
                     }
                 })
             }
         }
 
-        newUI(runPlayers, [])
-
-        // gui.slot(1, 2, slot => {
-        //     slot.item = 'green_concrete'
-        // })
+        // Open UI first time
+        newUI(runPlayerUUIDs, [])
     })
 }
 

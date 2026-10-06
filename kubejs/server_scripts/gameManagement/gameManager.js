@@ -28,9 +28,6 @@ function getPlayerUUIDsInArea(level, blockPos, radius) {
 function startRun(event, startingPlayerUUIDArray) {
     const { server, player, level } = event
 
-    // Run can only be started from the lobby dimension (shouldn't happy outside of it realistically)
-    if (level.dimension != "kubejs:lobby") { player.tell("§bYou must be in the lobby to start a run"); return 0 }
-
     // Generate a run uuid for tracking and dimension
     let runUUID = $UUID.randomUUID().toString()
     let runDimID = `rogue:${runUUID}`
@@ -62,18 +59,17 @@ function startRun(event, startingPlayerUUIDArray) {
     server.persistentData["runs"][runUUID] = runObjTemplate
     let runObj = server.persistentData["runs"][runUUID]
 
-    // Add the run uuid to every player in the run
-    player.tell(`§bStarting run§f: §a"§f${runUUID}§a"§r`)
+    console.log(`Starting run with UUID "${runUUID}" and players [${Array(playersInRunArray).join(", ")}]`)
+    console.log(`Creating dimension "${runDimID}" with theme "${runObj.current_theme}"`)
 
-    player.tell(`§bCreating dimension §a"§f${runDimID}§a"§b for run with theme §a"§f${runObj.current_theme}§a"§r`)
     global.dims.createDimension(`kubejs:${runObj.current_theme}`, runDimID)
     server.runCommandSilent(`execute in ${runDimID} run forceload add -1 -1 1 1`)
     server.runCommandSilent(`execute in ${runDimID} run place template kubejs:lobby_dungeon 0 256 0`)
 
-    player.tell(`§bPlayers in run§r: §a[§r${playersInRunArray.map(p => server.getPlayer($UUID.fromString(p)).name.string).join(", ")}§a]§r`)
+    // Add the run uuid to every player in the run
     playersInRunArray.forEach(uuid => {
         let runPlayer = server.getPlayer($UUID.fromString(uuid))
-        runPlayer.persistentData["current_run"] = runUUID
+        runPlayer.persistentData["current_run"] = { "uuid": runUUID, "floor": 1 }
         server.runCommandSilent(`execute in ${runDimID} run tp ${runPlayer.name.string} 14.0 270 14.0 180 0`)
         global.titles.sendTitle(runPlayer, { clear: true, reset: true })
     })
@@ -101,7 +97,6 @@ function endRun(event, runUUID) {
             server.persistentData["ended_run_players"].push(uuidString)
             return
         } else {
-            player.tell(`§bRun §a"§f${runUUID}§a"§b has ended.§r`)
             player.persistentData["current_run"] = null
         }
     })
@@ -154,6 +149,7 @@ ServerEvents.commandRegistry(e => {
                     const { server, player, level } = ctx.source
                     player.tell(`§bEnding all runs and clearing run data.§r`)
                     for (let runUUID of Object.keys(server.persistentData["runs"])) {
+                        player.tell(`§bEnding run§r: §a"§f${runUUID}§a"§r`)
                         endRun(ctx.source, runUUID)
                     }
                     return 1
