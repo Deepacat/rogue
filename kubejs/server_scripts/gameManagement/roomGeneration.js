@@ -1,37 +1,9 @@
-/** @param {Internal.CommandContext<Internal.CommandSourceStack>} ctx */
-function genStart(ctx, Commands, Arguments) {
-    const { server, player, level } = ctx.source
-    let { x, y, z } = player
-    let cx = player.chunkPosition().x
-    let cz = player.chunkPosition().z
-
-    server.runCommandSilent(`execute in ${level.dimension} run forceload add ` +
-        `${cx - 1} ${cz - 1} ${cx + 1} ${cz + 1}`)
-    server.runCommandSilent(`execute in ${level.dimension} run place template ` +
-        `kubejs:brick_lobby ${cx * 16} ${Math.floor(y) - 5} ${cz * 16}`)
-    return 1
-}
-
-ServerEvents.commandRegistry(e => {
-    const { commands: Commands, arguments: Arguments } = e
-    e.register(Commands.literal("dev")
-        .requires(s => s.hasPermission(2))
-        .then(Commands.literal("startgen")
-            .requires(s => s.hasPermission(2))
-            .executes(ctx => {
-                return genStart(ctx, Commands, Arguments)
-            })
-        )
-    )
-})
-
 /**
  * Places a new adjacent room
  * @param {BlockPos} pos - Position of the clicked door block (the old room's door)
  * @param {Internal.Direction} genDirection - Direction to generate the new room
  * @param {Object} runData - Current run data
  * @param {Internal.BlockRightClickedEventJS} e - Event object
- * @returns {{min:{x:number,y:number,z:number}, max:{x:number,y:number,z:number}}} World-space bounding box corners of the generated room (including the 2 blocks of bedrock used for the door connection)
  */
 function genRoomTest(pos, genDirection, runData, e) {
     const { server, player, level } = e
@@ -193,15 +165,24 @@ function genRoomTest(pos, genDirection, runData, e) {
         bottom: { x: roomMinX, y: roomMinY, z: roomMinZ },
         top: { x: roomMaxX, y: roomMaxY, z: roomMaxZ }
     }
-    console.log(`Bounding box with door:`)
-    console.log(boundingBoxWithDoor)
-    return boundingBoxWithDoor
+
+    // Update run data with new room
+    let run = getPlayerRun(player)
+    run.room_count += 1
+    run.current_room.room_data = roomObj.room_id
+    run.current_room.spawners_mined = 0
+    run.current_room.bounding_box = boundingBoxWithDoor
+
+    return 1
 }
 
+// TODO: Make a different way to gen rooms than right clicking this block (UI or something in world after room completion)
 BlockEvents.rightClicked("kubejs:door_data", e => {
     let blockState = e.level.getBlockState(e.block.pos)
     let facingProp = blockState.getValues().get(BlockProperties.HORIZONTAL_FACING)
     let outwardDir = $Direction.valueOf(facingProp.toString().toUpperCase()).getOpposite()
+    // Delete the door data block
     e.server.runCommandSilent(`execute in ${e.level.dimension} run setblock ${e.block.pos.x} ${e.block.pos.y} ${e.block.pos.z} minecraft:bedrock`)
-    genRoomTest(e.block.pos, outwardDir, currentRun, e)
+
+    genRoomTest(e.block.pos, outwardDir, getPlayerRun(e.player), e)
 })

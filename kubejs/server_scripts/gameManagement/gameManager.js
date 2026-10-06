@@ -1,13 +1,3 @@
-// TODO: Remove this placeholder and get the current run data when generating
-let currentRun = {
-    "floor_number": 1,
-    // "players": [],
-    // "alive_players": [],
-    "current_theme": "dungeon",
-    // "exhausted_rooms": [],
-    "room_count": 0
-}
-
 /** 
  * @param {Internal.Level} level
  * @param {Internal.BlockPos} blockPos 
@@ -52,6 +42,7 @@ function startRun(event, startingPlayerUUIDArray) {
         "current_room": { // The current newest generated room, tracks spawners for room conquer status
             "room_data": {},
             "spawners_mined": 0,
+            "bounding_box": {}
         }
     }
 

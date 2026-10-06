@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-05T03:33:28.198001300Z",
-  "totalMixinConfigs": 220,
-  "totalMixins": 3377,
+  "generatedAt": "2026-10-06T22:09:33.407038900Z",
+  "totalMixinConfigs": 222,
+  "totalMixins": 3378,
   "blacklistedCount": 1,
   "mixinConfigs": [
     {
@@ -1688,6 +1688,12 @@
           "blacklisted": false
         }
       ]
+    },
+    {
+      "name": "capejs.mixins.json",
+      "packageName": "dev.thestaticvoid.capejs.mixin.forge",
+      "priority": 1000,
+      "mixins": []
     },
     {
       "name": "emi-forge.mixins.json",
@@ -4385,6 +4391,21 @@
             "@Accessor"
           ],
           "side": "common",
+          "blacklisted": false
+        }
+      ]
+    },
+    {
+      "name": "capejs-common.mixins.json",
+      "packageName": "dev.thestaticvoid.capejs.mixin",
+      "priority": 1000,
+      "mixins": [
+        {
+          "className": "dev.thestaticvoid.capejs.mixin.client.AbstractClientPlayerFabricMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "client",
           "blacklisted": false
         }
       ]
