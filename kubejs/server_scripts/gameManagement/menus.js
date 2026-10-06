@@ -5,6 +5,7 @@
 function runCreationUI(event, player) {
     player.openChestGUI(Text.of(Text.red('Run Start Interface')), 3, gui => {
         gui.playerSlots = false
+        // TODO: Make this sort by like distance and take a max player param
         let runPlayerUUIDs = getPlayerUUIDsInArea(event.level, event.player.block.pos, 3)
         let removedPlayerUUIDs = [] // temp var for removed player list
 
@@ -12,7 +13,15 @@ function runCreationUI(event, player) {
             // Run start checkbox button
             gui.slot(4, 2, slot => {
                 slot.item = Item.of(heads.checkmark)
-                    .withNBT({ display: { Name: `{"text":"§aStart run"}` } })
+                    .withNBT({
+                        display: {
+                            Name: `{"text":"§aStart run"}`,
+                            Lore: [
+                                `{"text":"§7Click to start the run with ${runPlayerUUIDs.length - removedPlayerUUIDs.length} players:"}`,
+                                `{"text":"§7${runPlayerUUIDs.filter(p => !removedPlayerUUIDs.includes(p)).map(p => `§b${event.server.getPlayer($UUID.fromString(p)).name.string}§f`).join(', ')}"}`
+                            ]
+                        }
+                    })
                 slot.leftClicked = (ctx) => {
                     let finalRunPlayerUUIDs = runPlayerUUIDs.filter(p => !removedPlayerUUIDs.includes(p))
                     event.player.closeMenu()
@@ -44,7 +53,13 @@ function runCreationUI(event, player) {
                 let row = Math.floor(playersExceptSelf.indexOf(playerUUID) / 9)
                 gui.slot(coll, row, slot => {
                     slot.item = Item.of('minecraft:player_head') // Players head
-                        .withNBT({ SkullOwner: `${runPlayer.name.string}`, display: { Name: `{"text":"§b${runPlayer.name.string}§f ${joinOrNotMsg} join your run."}` } })
+                        .withNBT({
+                            SkullOwner: `${runPlayer.name.string}`,
+                            display: {
+                                Name: `{"text":"§b${runPlayer.name.string}§f ${joinOrNotMsg} join your run."}`,
+                                Lore: [`{"text":"§7Click to ${isPlayerRemoved ? '§lAdd§r§7' : '§lRemove§r§7'} player"}`]
+                            }
+                        })
                     slot.leftClicked = (ctx) => {
                         if (removedPlayerUUIDs.includes(runPlayer.uuid.toString())) {
                             // Add removed player back to run
