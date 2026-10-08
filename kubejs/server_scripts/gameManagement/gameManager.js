@@ -25,24 +25,23 @@ function startRun(event, startingPlayerUUIDArray) {
 
     // Template run object for tracking data related to the run
     let runObjTemplate = {
-        "dimension": runDimID, // The dimension for the run (`rogue:${runUUID}`)
+        "dimension": runDimID,      // The dimension for the run (`rogue:${runUUID}`)
         "current_theme": "dungeon", // TODO: pick a random theme (when theres more easy ones)
-        "room_count": 0, // Counter of how many rooms have generated per floor (0 lobby), resets on new floor
-        "floor_number": 1, // The floor number
+        "room_count": 0,            // Counter of how many rooms have generated per floor (0 lobby), resets on new floor
+        "floor_number": 1,          // The floor number
 
         // TODO: implement these 2 when making better room gen
-        "generated_boxes": [], // List of all room bounding boxes that are currently generated (To prevent overlaps) (Rooms maybe cleared to free up space)
-        "exhausted_rooms": [], // List of rooms that have already been generated for the floor (To later prevent duplicate rooms)
+        "generated_boxes": [],  // List of all room bounding boxes that are currently generated (To prevent overlaps) (Rooms maybe cleared to free up space)
+        "exhausted_rooms": [],  // List of rooms that have already been generated for the floor (To later prevent duplicate rooms)
 
-        "starting_players": playersInRunArray, // List of players present when run began
-        "alive_players": playersInRunArray, // List of currently alive players in the run (Including logged out players)
-        "dead_players": [], // Players that have fully died and are spectating
+        "starting_players": playersInRunArray,  // List of players present when run began
+        "alive_players": playersInRunArray,     // List of currently alive players in the run (Including logged out players)
+        "dead_players": [],                     // Players that have fully died and are spectating
 
-        // TODO: Make conquer status system, room data should be the rooms data obj which included the spawner % req and total spawners
-        "current_room": { // The current newest generated room, tracks spawners for room conquer status
-            "room_data": {},
-            "spawners_mined": 0,
-            "bounding_box": {}
+        "current_room": {           // The current newest generated room, tracks spawners for room conquer status
+            "room_id": undefined,   // Room ID string
+            "spawners_mined": 0,    // Counter of how many spawners have been mined in the room so far
+            "bounding_box": {}      // top and bottom corner X, Y, Z for the rooms bounding box (used to check spawners mined)
         }
     }
 

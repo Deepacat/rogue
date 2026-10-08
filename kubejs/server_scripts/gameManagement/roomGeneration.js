@@ -167,11 +167,11 @@ function genRoomTest(pos, genDirection, runData, e) {
     }
 
     // Update run data with new room
-    let run = getPlayerRun(player)
-    run.room_count += 1
-    run.current_room.room_data = roomObj.room_id
-    run.current_room.spawners_mined = 0
-    run.current_room.bounding_box = boundingBoxWithDoor
+    let runObj = getPlayerRun(player)
+    runObj.room_count += 1
+    runObj["current_room"].room_id = roomObj.room_id
+    runObj["current_room"].spawners_mined = 0
+    runObj["current_room"].bounding_box = boundingBoxWithDoor
 
     return 1
 }

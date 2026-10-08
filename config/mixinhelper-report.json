@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-06T22:09:33.407038900Z",
-  "totalMixinConfigs": 222,
-  "totalMixins": 3378,
+  "generatedAt": "2026-10-08T23:33:48.150409300Z",
+  "totalMixinConfigs": 226,
+  "totalMixins": 3434,
   "blacklistedCount": 1,
   "mixinConfigs": [
     {
@@ -4152,6 +4152,58 @@
       ]
     },
     {
+      "name": "amendments.mixins.json",
+      "packageName": "net.mehvahdjukaar.amendments.mixins.forge",
+      "priority": 1000,
+      "pluginClass": "net.mehvahdjukaar.amendments.mixins.MixinPlugin",
+      "mixins": [
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.forge.CompatFDSignBlockEntityMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.forge.CompatFDWallSignBlockEntityMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.forge.SelfCauldronMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.forge.CompatFarmersDelightHangingCanvasMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "client",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.forge.CompatFarmersDelightSignRendererMixin",
+          "annotations": [
+            "@Overwrite",
+            "@Inject",
+            "@ModifyReturnValue"
+          ],
+          "side": "client",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.forge.CompatFDSignEditScreenMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "client",
+          "blacklisted": false
+        }
+      ]
+    },
+    {
       "name": "ferritecore.threaddetec.mixin.json",
       "packageName": "malte0811.ferritecore.mixin.threaddetec",
       "priority": 1000,
@@ -7736,6 +7788,30 @@
             "@Inject"
           ],
           "side": "common",
+          "blacklisted": false
+        }
+      ]
+    },
+    {
+      "name": "stylisheffects.common.mixins.json",
+      "packageName": "fuzs.stylisheffects.mixin",
+      "priority": 1000,
+      "pluginClass": "fuzs.stylisheffects.mixin.ModMixinConfigPlugin",
+      "mixins": [
+        {
+          "className": "fuzs.stylisheffects.mixin.integration.rei.DefaultPotionEffectExclusionZonesMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "fuzs.stylisheffects.mixin.client.accessor.AbstractContainerMenuAccessor",
+          "annotations": [
+            "@Accessor"
+          ],
+          "side": "client",
           "blacklisted": false
         }
       ]
@@ -14724,6 +14800,363 @@
       ]
     },
     {
+      "name": "amendments-common.mixins.json",
+      "packageName": "net.mehvahdjukaar.amendments.mixins",
+      "priority": 1000,
+      "pluginClass": "net.mehvahdjukaar.amendments.mixins.MixinPlugin",
+      "mixins": [
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.AbstractCauldronBlockMixin",
+          "annotations": [
+            "@ModifyReturnValue"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.AbstractHurtingProjectileMixin",
+          "annotations": [
+            "@ModifyArg"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.AbstractSkullBlockMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.BellMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.BellTileEntityMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.BlocksMixin",
+          "annotations": [
+            "@Redirect"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.BrewingMixin",
+          "annotations": [
+            "@WrapOperation"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.BrewingStandMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.CampfireBlockEntityMixin",
+          "annotations": [
+            "@ModifyExpressionValue"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.CauldronBlockMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.CeilingHangingSignBlockMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.CompatQuarkSelfCandleSkullMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.DragonFireballMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.ExplosionMixin",
+          "annotations": [
+            "@WrapOperation",
+            "@WrapWithCondition",
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.FenceBlockMixin",
+          "annotations": [
+            "@ModifyReturnValue"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.FireballMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.FireballMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.FlowerPotBlockMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.HangingSignBlockEntityMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.JukeboxBlockEntityMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.JukeboxBlockMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.LanternBlockPlacementMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.LargeFireballMixin",
+          "annotations": [
+            "@WrapOperation",
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.LavaCauldronMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.LecternBlockEntityMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.LecternBlockEntityUpdateMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.LecternBlockMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.PotionTooltipMixin",
+          "annotations": [
+            "@WrapOperation"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.SignBlockEntityMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.SignBlockMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.SkullBlockMixin",
+          "annotations": [
+            "@Inject",
+            "@ModifyReturnValue"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.SlimeBallMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.SmallFireballMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.SnowballMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.VineMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.WallHangingSignBlockMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.WallSignBlockMixin",
+          "annotations": [
+            "@ModifyReturnValue"
+          ],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.WaterLilyMixin",
+          "annotations": [],
+          "side": "common",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.BellRendererMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "client",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.DisplayCacheMixin",
+          "annotations": [
+            "@Redirect"
+          ],
+          "side": "client",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.DragonBreathParticleMixin",
+          "annotations": [],
+          "side": "client",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.HangingSignRendererMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "client",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.SignEditScreenMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "client",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.SignRendererAccessor",
+          "annotations": [
+            "@Invoker"
+          ],
+          "side": "client",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.SignRendererMixin",
+          "annotations": [
+            "@Overwrite",
+            "@Inject",
+            "@ModifyReturnValue"
+          ],
+          "side": "client",
+          "blacklisted": false
+        },
+        {
+          "className": "net.mehvahdjukaar.amendments.mixins.SkullBlockRendererMixin",
+          "annotations": [
+            "@Inject",
+            "@WrapOperation"
+          ],
+          "side": "client",
+          "blacklisted": false
+        }
+      ]
+    },
+    {
       "name": "vanillabackport.mixins.json",
       "packageName": "com.blackgear.vanillabackport.core.mixin",
       "priority": 1000,
@@ -16306,6 +16739,30 @@
       "packageName": "com.corosus.coroutil.mixin",
       "priority": 1000,
       "mixins": []
+    },
+    {
+      "name": "overflowingbars.common.mixins.json",
+      "packageName": "fuzs.overflowingbars.mixin",
+      "priority": 1000,
+      "pluginClass": "fuzs.overflowingbars.mixin.ModMixinConfigPlugin",
+      "mixins": [
+        {
+          "className": "fuzs.overflowingbars.mixin.client.ChatComponentMixin",
+          "annotations": [
+            "@ModifyVariable"
+          ],
+          "side": "client",
+          "blacklisted": false
+        },
+        {
+          "className": "fuzs.overflowingbars.mixin.client.GuiMixin",
+          "annotations": [
+            "@Inject"
+          ],
+          "side": "client",
+          "blacklisted": false
+        }
+      ]
     },
     {
       "name": "amecsapi.mixins.json",

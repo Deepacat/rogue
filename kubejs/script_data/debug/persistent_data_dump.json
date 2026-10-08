@@ -1,10 +1,10 @@
 {
 	"server_first_load": 0,
 	"runs": {
-		"15cc21b0-f35f-4346-a842-0c2aa4bfe555": {
-			"dimension": "rogue:15cc21b0-f35f-4346-a842-0c2aa4bfe555",
+		"2c0bb389-47e4-4232-8f97-42f6177d3b36": {
+			"dimension": "rogue:2c0bb389-47e4-4232-8f97-42f6177d3b36",
 			"current_theme": "dungeon",
-			"room_count": 1,
+			"room_count": 3,
 			"floor_number": 1,
 			"generated_boxes": [],
 			"exhausted_rooms": [],
@@ -18,20 +18,20 @@
 			],
 			"dead_players": [],
 			"current_room": {
-				"room_data": "kubejs:vinnyacornertest",
-				"spawners_mined": 10,
+				"spawners_mined": 9,
 				"bounding_box": {
 					"bottom": {
-						"x": 4,
+						"x": 28,
 						"y": 254,
-						"z": -33
+						"z": 8
 					},
 					"top": {
-						"x": 38,
+						"x": 64,
 						"y": 267,
-						"z": 1
+						"z": 40
 					}
-				}
+				},
+				"room_id": "kubejs:vinnyacornertest"
 			}
 		}
 	},
