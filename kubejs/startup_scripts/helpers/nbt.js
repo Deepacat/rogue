@@ -1,11 +1,13 @@
 global.nbt = {}
 /**
- * Converts java compoungTag into a JS Object for use getting data from persistentData
- * ai generated deepa is liable kill me
+ * Converts Java NBT/CompoundTag into JS equivalent data types
+ * CompoundTag > Object
+ * ListTag > Array
+ * etc
  * @param {Internal.CompoundTag} tag 
  * @returns 
  */
-function nbtToObject(tag) {
+function nbtToJS(tag) {
     if (tag === null || tag === undefined) return null
 
     const id = tag.getId()  // numeric NBT type ID
@@ -14,7 +16,7 @@ function nbtToObject(tag) {
     if (id === 10) {
         const obj = {}
         for (let key of tag.getAllKeys()) {
-            obj[key] = nbtToObject(tag.get(key))
+            obj[key] = nbtToJS(tag.get(key))
         }
         return obj
     }
@@ -23,7 +25,7 @@ function nbtToObject(tag) {
     if (id === 9) {
         const arr = []
         for (let i = 0; i < tag.size(); i++) {
-            arr.push(nbtToObject(tag.get(i)))
+            arr.push(nbtToJS(tag.get(i)))
         }
         return arr
     }
@@ -43,8 +45,13 @@ function nbtToObject(tag) {
 
     return tag.toString()
 }
-global.nbt.nbtToObject = nbtToObject
+global.nbt.nbtToJS = nbtToJS
 
+/**
+ * Converts a UUID string into an IntArrayTag
+ * @param {String} uuidString 
+ * @returns 
+ */
 function uuidToIntArrayTag(uuidString) {
     return $NbtUtils.createUUID($UUID.fromString(uuidString))
 }

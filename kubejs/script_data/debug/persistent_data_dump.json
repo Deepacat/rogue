@@ -2,7 +2,7 @@
 	"server_first_load": 0,
 	"runs": {
 		"c1489728-1e40-46dc-a0d7-642b3b85ab00": {
-			"room_count": 9,
+			"room_count": 33,
 			"generated_boxes": [],
 			"dead_players": [],
 			"current_theme": "dungeon",
@@ -15,18 +15,18 @@
 				"15d2f1b4-dd16-405e-a4d4-a89ecbeeb593"
 			],
 			"current_room": {
-				"room_id": "kubejs:vinnyacornertest",
+				"room_id": "kubejs:vinnyalonghalltest",
 				"spawners_mined": 0,
 				"bounding_box": {
 					"bottom": {
-						"x": -227,
-						"y": 214,
-						"z": -105
+						"x": -1007,
+						"y": 240,
+						"z": -68
 					},
 					"top": {
-						"x": -193,
-						"y": 227,
-						"z": -71
+						"x": -976,
+						"y": 254,
+						"z": -20
 					}
 				}
 			},

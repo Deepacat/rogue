@@ -176,7 +176,7 @@ function generateRoom(pos, genDirection, runData, e) {
     runObj["current_room"].bounding_box = boundingBoxWithDoor
 
     // Select exit doors
-    let exitDoors = Array.of(roomObj.doors).filter(d => d)
+    let exitDoors = $ArrayList(roomObj.doors).filter(d => d.door_type == "any")
     console.log(`Exit doors: ${exitDoors}`)
     return 1
 }

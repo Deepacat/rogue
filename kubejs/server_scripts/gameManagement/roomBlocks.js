@@ -43,7 +43,7 @@ function roomDataBlockClicked(e) {
     let { block, player, item, hand } = e
     if (hand == "OFF_HAND") return
     player.tell(`Stored Data:`)
-    let nbtArray = Object.entries(nbtToObject(block.entityData?.data)) // convert custom data NBT to object then array
+    let nbtArray = Object.entries(nbtToJS(block.entityData?.data)) // convert custom data NBT to object then array
     for (let [key, val] of nbtArray) { // loop over array and tell data
         player.tell(`§b${key}§r: §a${val}`)
     }
