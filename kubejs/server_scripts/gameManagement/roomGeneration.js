@@ -1,16 +1,18 @@
+// priority: 100
+
 /**
- * Places a new adjacent room
+ * Generates a new room in the run
  * @param {BlockPos} pos - Position of the clicked door block (the old room's door)
  * @param {Internal.Direction} genDirection - Direction to generate the new room
  * @param {Object} runData - Current run data
  * @param {Internal.BlockRightClickedEventJS} e - Event object
  */
-function genRoomTest(pos, genDirection, runData, e) {
+function generateRoom(pos, genDirection, runData, e) {
     const { server, player, level } = e
     /* Main room generation code */
 
     // debug
-    // console.log(`Outward direction (genDirection): ${genDirection}`)
+    console.log(`Outward direction (genDirection): ${genDirection}`)
 
     // Pick a random room from the floor's room list
     let roomList = floorData[runData.current_theme]["normal"]
@@ -40,8 +42,8 @@ function genRoomTest(pos, genDirection, runData, e) {
     }
 
     // debug
-    // console.log(`Selected door: facing=${originalFacing}, pos=(${randomDoor.pos.x},${randomDoor.pos.y},${randomDoor.pos.z})`)
-    // console.log(`Target facing: ${genDirection}, delta=${delta}, rotation=${rotationCommand}`)
+    console.log(`Selected door: facing=${originalMarkerFacing}, pos=(${randomDoor.pos.x},${randomDoor.pos.y},${randomDoor.pos.z})`)
+    console.log(`Target facing: ${genDirection}, delta=${delta}, rotation=${rotationCommand}`)
 
     // Rotate the doors relative offset (x, z) by (delta * 90deg)
     let doorRelX = randomDoor.pos.x
@@ -68,9 +70,9 @@ function genRoomTest(pos, genDirection, runData, e) {
     let originZ = doorWorldZ - doorRelZ
 
     // debug
-    // console.log(`Door world position: (${doorWorldX}, ${doorWorldY}, ${doorWorldZ})`)
-    // console.log(`Rotated door offset: (${doorRelX}, ${randomDoor.pos.y}, ${doorRelZ})`)
-    // console.log(`Computed origin: (${originX}, ${originY}, ${originZ})`)
+    console.log(`Door world position: (${doorWorldX}, ${doorWorldY}, ${doorWorldZ})`)
+    console.log(`Rotated door offset: (${doorRelX}, ${randomDoor.pos.y}, ${doorRelZ})`)
+    console.log(`Computed origin: (${originX}, ${originY}, ${originZ})`)
 
     let roomPlaceCommand = `execute in ${level.dimension} run place template ${randomRoom} ${originX} ${originY} ${originZ} ${rotationCommand}`
     console.log(`Placing room with command: ${roomPlaceCommand}`)
@@ -173,16 +175,8 @@ function genRoomTest(pos, genDirection, runData, e) {
     runObj["current_room"].spawners_mined = 0
     runObj["current_room"].bounding_box = boundingBoxWithDoor
 
+    // Select exit doors
+    let exitDoors = Array.of(roomObj.doors).filter(d => d)
+    console.log(`Exit doors: ${exitDoors}`)
     return 1
 }
-
-// TODO: Make a different way to gen rooms than right clicking this block (UI or something in world after room completion)
-BlockEvents.rightClicked("kubejs:door_data", e => {
-    let blockState = e.level.getBlockState(e.block.pos)
-    let facingProp = blockState.getValues().get(BlockProperties.HORIZONTAL_FACING)
-    let outwardDir = $Direction.valueOf(facingProp.toString().toUpperCase()).getOpposite()
-    // Delete the door data block
-    e.server.runCommandSilent(`execute in ${e.level.dimension} run setblock ${e.block.pos.x} ${e.block.pos.y} ${e.block.pos.z} minecraft:bedrock`)
-
-    genRoomTest(e.block.pos, outwardDir, getPlayerRun(e.player), e)
-})

@@ -170,6 +170,19 @@ ServerEvents.commandRegistry(e => {
 			)
 		)
 	)
+	// Other helper commands unrelated to modpack specific or debugging (Or just want to type quickly)
+	e.register(Commands.literal("qrl") // quick kjs reloads
+		.requires(s => s.hasPermission(2))
+		.executes(ctx => {
+			/** @type {Internal.Player} */
+			let player = ctx.source.player
+			if (!player) return 0
+			player.runCommand("kubejs reload startup_scripts")
+			player.runCommand("kubejs reload server_scripts")
+			player.runCommand("kubejs reload client_scripts")
+			return 1
+		})
+	)
 	e.register(Commands.literal("renameHand")
 		.requires(s => s.hasPermission(2))
 		.then(Commands.argument("newName", Arguments.GREEDY_STRING.create(e))

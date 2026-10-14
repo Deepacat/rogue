@@ -1,40 +1,40 @@
 {
 	"server_first_load": 0,
 	"runs": {
-		"2c0bb389-47e4-4232-8f97-42f6177d3b36": {
-			"dimension": "rogue:2c0bb389-47e4-4232-8f97-42f6177d3b36",
-			"current_theme": "dungeon",
-			"room_count": 3,
-			"floor_number": 1,
+		"c1489728-1e40-46dc-a0d7-642b3b85ab00": {
+			"room_count": 9,
 			"generated_boxes": [],
-			"exhausted_rooms": [],
-			"starting_players": [
-				"23746451-197f-4d66-ba6b-cec7fc5c0f1c",
-				"15d2f1b4-dd16-405e-a4d4-a89ecbeeb593"
-			],
-			"alive_players": [
-				"23746451-197f-4d66-ba6b-cec7fc5c0f1c",
-				"15d2f1b4-dd16-405e-a4d4-a89ecbeeb593"
-			],
 			"dead_players": [],
+			"current_theme": "dungeon",
+			"exhausted_rooms": [],
+			"alive_players": [
+				"15d2f1b4-dd16-405e-a4d4-a89ecbeeb593"
+			],
+			"dimension": "rogue:c1489728-1e40-46dc-a0d7-642b3b85ab00",
+			"starting_players": [
+				"15d2f1b4-dd16-405e-a4d4-a89ecbeeb593"
+			],
 			"current_room": {
-				"spawners_mined": 9,
+				"room_id": "kubejs:vinnyacornertest",
+				"spawners_mined": 0,
 				"bounding_box": {
 					"bottom": {
-						"x": 28,
-						"y": 254,
-						"z": 8
+						"x": -227,
+						"y": 214,
+						"z": -105
 					},
 					"top": {
-						"x": 64,
-						"y": 267,
-						"z": 40
+						"x": -193,
+						"y": 227,
+						"z": -71
 					}
-				},
-				"room_id": "kubejs:vinnyacornertest"
-			}
+				}
+			},
+			"floor_number": 1
 		}
 	},
-	"ended_run_players": [],
+	"ended_run_players": [
+		"23746451-197f-4d66-ba6b-cec7fc5c0f1c"
+	],
 	"spawn_generated": 1
 }
