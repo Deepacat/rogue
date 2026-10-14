@@ -1,9 +1,13 @@
 /** @param {Internal.SimplePlayerEventJS} e */
 function updateRPC(e) {
+    let rooms = savedRooms || {}
+    let serverData = e.server.persistentData || {}
+    let playerData = e.player.persistentData || {}
+
     e.player.sendData("kubejs:rpc", {
-        serverPersistentData: e.server.persistentData,
-        playerPersistentData: e.player.persistentData,
-        rooms: savedRooms
+        serverPersistentData: serverData,
+        playerPersistentData: playerData,
+        rooms: rooms
     })
 }
 
