@@ -123,7 +123,7 @@
     "infiniteReach": false,
     "infiniteReachLimit": -1,
     "fastPlace": false,
-    "angelPlacement": false,
+    "angelPlacement": true,
     "noClip": false,
     "phantom": false
   },
@@ -224,7 +224,7 @@
     "useVanillaMovementForEditor": true,
     "tallGrassIsActuallyNotTall": false,
     "disableChunkRenderOverrider": false,
-    "hadEditorUIOpen": false,
+    "hadEditorUIOpen": true,
     "blueprintBrowserDirSize": 175,
     "usedBuilderToolFill": false
   }

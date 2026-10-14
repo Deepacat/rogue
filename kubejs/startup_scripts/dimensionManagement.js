@@ -42,11 +42,15 @@ function deleteDimension(dimensionID) {
     console.log(`Attempting to delete dimension: ${dimensionID}`)
     Utils.server.runCommandSilent(`execute in ${dimensionID} run forceload remove all`)
     Utils.server.scheduleInTicks(1, () => {
-        console.log(`Deleting dimension: ${dimensionID}`)
         $InfiniverseAPI.get().markDimensionForUnregistration(Utils.server, $ResourceKey.create($Registries.DIMENSION, dimensionID))
-        if (Utils.server.getLevel(dimensionID) != null) {
-            console.log(`Failed to delete dimension: ${dimensionID}`)
-        }
+        Utils.server.scheduleInTicks(1, () => {
+            if (Utils.server.levelKeys().contains($ResourceKey.create($Registries.DIMENSION, dimensionID))) {
+                console.log(`Failed to delete dimension: ${dimensionID}`)
+                Utils.server.tell(`§cFailed to delete dimension: ${dimensionID}`)
+            } else {
+                console.log(`Successfully Deleted dimension: ${dimensionID}`)
+            }
+        })
     })
     return 1
 }
