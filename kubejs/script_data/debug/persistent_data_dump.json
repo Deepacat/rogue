@@ -1,13 +1,11 @@
 {
 	"server_first_load": 0,
-	"ended_run_players": [
-		"23746451-197f-4d66-ba6b-cec7fc5c0f1c"
-	],
+	"ended_run_players": [],
 	"runs": {
-		"1f28ae11-8ddf-428b-a380-a10a92c4829e": {
-			"dimension": "rogue:1f28ae11-8ddf-428b-a380-a10a92c4829e",
+		"f4df1edd-a557-4ac0-857d-2bf352c381f1": {
+			"dimension": "rogue:f4df1edd-a557-4ac0-857d-2bf352c381f1",
 			"current_theme": "dungeon",
-			"room_count": 7,
+			"room_count": 3,
 			"floor_number": 1,
 			"generated_boxes": [],
 			"exhausted_rooms": [],
@@ -22,14 +20,14 @@
 				"spawners_mined": 0,
 				"bounding_box": {
 					"bottom": {
-						"x": 4,
-						"y": 295,
-						"z": 97
+						"x": -40,
+						"y": 246,
+						"z": -56
 					},
 					"top": {
-						"x": 38,
-						"y": 336,
-						"z": 133
+						"x": -6,
+						"y": 287,
+						"z": -20
 					}
 				},
 				"room_id": "kubejs:vinnya36doortest"

@@ -1,27 +1,56 @@
 // priority: 100
 
+const roomTypes = {
+    trinket_reward: {
+        roomType: "normal",     // Type of room, defines which rooms can be generated
+        roomPool: "generic",    // Where/when the room can generate, "generic" is any new opened non guaranteed room
+        weight: 100             // weight of the room in the room pool
+    },
+    gear_reward: {
+        roomType: "normal",
+        roomPool: "generic",
+        weight: 100
+    },
+    shrine: {   // Shrine type is rarer, can still generate anywhere using generic pool (normally opened new rooms)
+        roomType: "shrine",
+        roomPool: "generic",
+        weight: 25
+    },
+        boss: {
+        roomType: "boss",   // Boss room type can only generate at end of the floor
+        roomPool: "boss"    // Can use any room in the boss pool (If multiple in the same theme exist)
+    },
+    lobby: {
+        roomType: "lobby",  // Lobby room type can only generate on new floor/start of run
+        roomPool: "lobby"   // Can use any room in the lobby pool (If multiple in the same theme exist)
+    }
+}
+
 /**
- * Generates a new room in the run
+ * Main function to create a new room in the run
  * @param {BlockPos} pos - Position of the clicked door block (the old room's door)
  * @param {Internal.Direction} genDirection - Direction to generate the new room
  * @param {Object} runData - Current run data
  * @param {Internal.BlockRightClickedEventJS} e - Event object
  */
-function generateRoom(pos, genDirection, runData, e) {
+function createRoom(pos, genDirection, runData, e) {
     const { server, player, level } = e
     let dirs = ['north', 'east', 'south', 'west']
     let yawMap = { south: 0, west: 90, north: 180, east: 270 }
 
     console.log(`Outward direction (genDirection): ${genDirection}`) // debug
 
+    // Get the obj of a random room from the floors current theme to generate of "normal" room type
     let pick = pickRoom(runData.current_theme, "normal")
     let randomRoom = pick.randomRoom
     let roomObj = pick.roomObj
 
+    // Get a random non-exit door to set as the new rooms entrance when generating
     let nonExitDoors = roomObj.doors.filter(door => door.door_type != "exit")
     let randomDoor = nonExitDoors[Math.floor(Math.random() * nonExitDoors.length)]
     let originalMarkerFacing = $Direction.valueOf(String(randomDoor.facing).toUpperCase())
 
+    // Get rotation for room placement (since the randomly picked entrance door maybe rotated)
     let rot = computeRotation(originalMarkerFacing, genDirection)
     let delta = rot.delta
     let rotationCommand = rot.rotationCommand
@@ -34,11 +63,9 @@ function generateRoom(pos, genDirection, runData, e) {
     let offsetX = genDirection.x * 3
     let offsetY = 0
     let offsetZ = genDirection.z * 3
-
     let doorWorldX = pos.x + offsetX
     let doorWorldY = pos.y + offsetY
     let doorWorldZ = pos.z + offsetZ
-
     let originX = doorWorldX - doorRel.x
     let originY = doorWorldY - randomDoor.pos.y
     let originZ = doorWorldZ - doorRel.z
@@ -47,13 +74,16 @@ function generateRoom(pos, genDirection, runData, e) {
     console.log(`Rotated door offset: (${doorRel.x}, ${randomDoor.pos.y}, ${doorRel.z})`) // debug
     console.log(`Computed origin: (${originX}, ${originY}, ${originZ})`) // debug
 
+    // Placing the room
     let roomPlaceCommand = `execute in ${level.dimension} run place template ${randomRoom} ${originX} ${originY} ${originZ} ${rotationCommand}`
     console.log(`Placing room with command: ${roomPlaceCommand}`) // debug
     let roomPlaceReturn = server.runCommandSilent(roomPlaceCommand)
     console.log(roomPlaceReturn) // debug
 
+    // Clearing the doorway into the new room (filled with air)
     fillDoorwayArea(server, level, pos, genDirection, offsetX, offsetY, offsetZ)
 
+    // Save bounding box, used for spawner mined detection and saving position of previous rooms
     let boundingBoxWithDoor = computeRoomBounds(roomObj, originX, originY, originZ, delta, genDirection)
 
     let runObj = getPlayerRun(player)
@@ -62,8 +92,10 @@ function generateRoom(pos, genDirection, runData, e) {
     runObj["current_room"].spawners_mined = 0
     runObj["current_room"].bounding_box = boundingBoxWithDoor
 
+    // Get suitable exit doors in the new room to pick possible new doors
     let exitDoors = selectExitDoors(roomObj, randomDoor)
 
+    // Spawn text displays and armor stands used for display and opening new rooms
     spawnDoorEntities(level, exitDoors, originX, originY, originZ, delta, dirs, yawMap)
 
     return 1
@@ -294,7 +326,7 @@ function spawnDoorEntities(level, exitDoors, originX, originY, originZ, delta, d
         let clickableStand = level.createEntity("minecraft:armor_stand")
         clickableStand.setPosition(standX, standY, standZ)
         clickableStand.mergeNbt({
-            Invisible: 0, Invulnerable: 1, PersistenceRequired: 1, NoBasePlate: 1, NoGravity: 1, Small: 1, DisabledSlots: 16191,
+            Invisible: 1, Invulnerable: 1, PersistenceRequired: 1, NoBasePlate: 1, NoGravity: 1, Small: 1, DisabledSlots: 16191,
             "pehkui:scale_data_types": { "pehkui:width": { "scale": 4 } }, // see pehkui data types with /scale
             "ForgeData": { door_data: door, "aaaaaaaaa": "bbbbbbbbbbbb" }
         })

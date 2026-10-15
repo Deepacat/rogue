@@ -16,7 +16,7 @@ NetworkEvents.dataReceived('kubejs:rpc', event => {
 PresenceJSEvents.build(event => {
     if (!enableRPC) return
     const presence = event.getPresence()
-    const context = event.getContext()
+    const ctx = event.getContext()
     // Discord app ID
     presence.setClientId('1559843079010263100')
 
@@ -26,13 +26,12 @@ PresenceJSEvents.build(event => {
     // Lower text
     presence.setState("meow")
     // Large image on the left (asset ID, message)
-    presence.setLargeImage(PresenceJS.image('blob', 'awawa'))
+    presence.setLargeImage('blob', `theyre eating my flesh`)
     // Smaller image on the bottom right of it (asset ID, message)
-    presence.setSmallImage(PresenceJS.image('paws', 'paws at u'))
+    presence.setSmallImage('paws', `paws at u`)
     // Add buttons (left to right, 2 max) (label, url)
     presence.addButton(PresenceJS.button('Github', 'https://github.com/Deepacat/rogue'))
     presence.addButton(PresenceJS.button('x3', 'https://deepa.cat/'))
-
 
     // Overrides
     if (rpcData?.serverPersistentData != null && rpcData?.playerPersistentData != null && rpcData?.rooms != null) {
@@ -46,7 +45,7 @@ PresenceJSEvents.build(event => {
             serverRun = serverData.runs[playerRun.uuid] || null
         }
 
-        if (serverRun) {
+        if (serverRun && serverRun.current_room) {
             let roomObj = rpcData.rooms[serverRun.current_room.room_id]
             let floorText = `F${serverRun.floor_number}`
             let spawnersMined = serverRun.current_room.spawners_mined
@@ -55,13 +54,10 @@ PresenceJSEvents.build(event => {
             presence.setState(
                 `${floorText}` +
                 ` / in ${roomName}` +
-                ` / ⛏ ${spawnersMined}/${spawnerTotalReq} spawners` +
-                `                ` + // funny spacer
-                `\n meow!!` +
-                `\n mrow!!!!!!!!!!!!`
+                ` / ⛏ ${spawnersMined}/${spawnerTotalReq} spawners`
             )
         } else {
-            presence.setState('In lobby')
+            presence.setState(`In lobby.`)
         }
     }
 })

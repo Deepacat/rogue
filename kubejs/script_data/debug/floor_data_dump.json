@@ -6,7 +6,11 @@
 		"normal": [
 			"kubejs:vinnyacornertest",
 			"kubejs:vinnya36doortest",
-			"kubejs:vinnyalonghalltest"
+			"kubejs:vinnyalonghalltest",
+			"kubejs:dungeon_small_test"
+		],
+		"shrine": [
+			"kubejs:shrinetest"
 		]
 	}
 }

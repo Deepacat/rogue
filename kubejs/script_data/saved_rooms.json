@@ -9,7 +9,7 @@
 		"spawner_count": 0,
 		"room_data": {
 			"floor_theme": "dungeon",
-			"spawners_required": 0.9,
+			"spawners_required": 0,
 			"room_type": "lobby"
 		},
 		"doors": [
@@ -590,6 +590,83 @@
 					"x": 29,
 					"y": 8,
 					"z": 41
+				}
+			}
+		]
+	},
+	"kubejs:shrinetest": {
+		"room_id": "kubejs:shrinetest",
+		"bounding_box": {
+			"x": 15,
+			"y": 11,
+			"z": 25
+		},
+		"spawner_count": 0,
+		"room_data": {
+			"floor_theme": "dungeon",
+			"spawners_required": 0,
+			"room_type": "shrine"
+		},
+		"doors": [
+			{
+				"facing": "south",
+				"door_type": "any",
+				"pos": {
+					"x": 7,
+					"y": 4,
+					"z": 1
+				}
+			},
+			{
+				"facing": "north",
+				"door_type": "any",
+				"pos": {
+					"x": 7,
+					"y": 4,
+					"z": 23
+				}
+			}
+		]
+	},
+	"kubejs:dungeon_small_test": {
+		"room_id": "kubejs:dungeon_small_test",
+		"bounding_box": {
+			"x": 13,
+			"y": 18,
+			"z": 13
+		},
+		"spawner_count": 0,
+		"room_data": {
+			"floor_theme": "dungeon",
+			"spawners_required": 0.9,
+			"room_type": "normal"
+		},
+		"doors": [
+			{
+				"facing": "south",
+				"door_type": "exit",
+				"pos": {
+					"x": 7,
+					"y": 6,
+					"z": 1
+				}
+			},
+			{
+				"facing": "north",
+				"door_type": "exit",
+				"pos": {
+					"x": 6,
+					"y": 2,
+					"z": 11
+				}
+			},
+			{
+				"facing": "west",
+				"door_type": "entrance",
+				"pos": {
+					"x": 11,
+					"y": 13,
+					"z": 8
 				}
 			}
 		]

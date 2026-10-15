@@ -1,6 +1,7 @@
 {
 	"types": [
 		"lobby",
-		"normal"
+		"normal",
+		"shrine"
 	]
 }

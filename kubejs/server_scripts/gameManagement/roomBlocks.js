@@ -1,7 +1,7 @@
 BlockEvents.rightClicked(e => {
-    if (e.block.id == "kubejs:door_data") { doorDataBlockClicked(e) }
-    if (e.block.id == "kubejs:room_corner") { roomCornerBlockClicked(e) }
-    if (e.block.id == "kubejs:room_data") { roomDataBlockClicked(e) }
+    if (e.block.id == "kubejs:door_data") { doorDataBlockClicked(e); e.cancel() }
+    if (e.block.id == "kubejs:room_corner") { roomCornerBlockClicked(e); e.cancel() }
+    if (e.block.id == "kubejs:room_data") { roomDataBlockClicked(e); e.cancel()}
 })
 
 /** @param {Internal.BlockRightClickedEventJS} e */
@@ -19,12 +19,13 @@ function doorDataBlockClicked(e) {
     // Delete the door data block to prevent multi-using it
     e.server.runCommandSilent(`execute in ${level.dimension} run setblock ${block.pos.x} ${block.pos.y} ${block.pos.z} minecraft:bedrock`)
 
-    generateRoom(block.pos, outwardDir, getPlayerRun(player), e)
+    createRoom(block.pos, outwardDir, getPlayerRun(player), e)
 }
 
 /** @param {Internal.BlockRightClickedEventJS} e */
 function roomCornerBlockClicked(e) {
     let { block, player, item, hand } = e
+    if (hand == "OFF_HAND") return
     if (item.id != "minecraft:structure_block") {
         player.tell(`§bCurrent Room ID§r: §a${block.entityData?.data?.room ? `"${block.entityData.data.room}"` : "None given."}`)
         return
@@ -42,8 +43,8 @@ function roomCornerBlockClicked(e) {
 function roomDataBlockClicked(e) {
     let { block, player, item, hand } = e
     if (hand == "OFF_HAND") return
-    player.tell(`Stored Data:`)
-    let nbtArray = Object.entries(nbtToJS(block.entityData?.data)) // convert custom data NBT to object then array
+    player.tell(`§bStored Data:`)
+    let nbtArray = Object.entries(global.nbt.nbtToJS(block.entityData?.data)) // convert custom data NBT to object then array
     for (let [key, val] of nbtArray) { // loop over array and tell data
         player.tell(`§b${key}§r: §a${val}`)
     }
